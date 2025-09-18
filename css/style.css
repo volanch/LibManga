@@ -1,0 +1,47 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #202020;
+}
+
+.foo {
+    padding: 10px;
+    background-color: #2b2b2c;
+}
+
+.foo ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.foo li {
+    position: relative;
+}
+
+.foo a {
+    display: block;
+    padding: 8px 14px;
+    color: #eee;
+    text-decoration: none;
+}
+
+.block {
+    padding :5%;
+}
+
+.block img{
+    border-radius: 25px;
+    width: 200px;
+    length:300px;
+}
+
+.block ul {
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+    display: flex;
+}
