@@ -29,43 +29,41 @@ body{
 }
 
 .block {
+    display: flex;
+    margin: 20px;
     text-decoration: none;
-
     color: #e6eef8;
     padding: 15px;
     background-color: #1a2435;
     border-radius: 30px;
     min-width: 200px;
+    width: 50%;
+}
+.foa{
+    margin-left:100px;
 }
 
 .block img {
+
     border-radius: 15px;
-    width: 200px;
-    height: 300px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
 }
 .block h4 {
     font-size: .8rem;
+    padding: 10px;
+    margin-top:10px;
     font-family: "Trebuchet MS", Arial, sans-serif;
     color: #88898c;
 }
 
 .block h3 {
-    text-align: center;
+    margin-right: 0;
+    margin-left: auto;
     margin-top: 10px;
+    padding: 10px;
     font-family: "Trebuchet MS", Arial, sans-serif;
-}
-
-.blocks-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 5%;
-    flex-wrap: wrap;
-}
-
-.item1{
-    grid-row:auto;
 }
 
 .footer{
