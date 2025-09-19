@@ -77,9 +77,8 @@ p {
 
 .cover-side {
     width: 350px;
-    max-width: 40%;
-    height: auto;
-    border-radius: 8px;
+    height: 500px;
+    border-radius: 50%;
 }
 
 
