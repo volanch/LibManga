@@ -29,6 +29,13 @@ p {
     text-align: center;
 }
 
+#chapters-header {
+    padding: 1rem;
+    background: #141d2a;
+    border-bottom: 2px solid #f97316;
+    text-align: center;
+}
+
 .nav a {
     margin: 0 0.5rem;
     padding: 0.25rem 0.5rem;
@@ -38,6 +45,7 @@ p {
 
 .nav a:hover {
     opacity: 0.8;
+    color: #fb923c;
     text-decoration: underline;
 }
 
