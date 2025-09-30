@@ -1,46 +1,103 @@
 body {
-    background-color: #0f1720;
-    margin: 0;
+  background-color: #0f1720;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
 }
-.up {
-    background-color: #0b1220;
-    height: 60px;
-    width: 100%;
-    display: flex;              
-    justify-content: center;    
-    align-items: center;  
-          
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 60px auto 60px;
+  min-height: 100vh;
 }
-#bold {
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    margin: 0; 
+
+.header {
+  grid-area: header;
+  background-color: #0b1220;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
 }
-#back {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 6px;
-    left: 20px;
+
+.logo img {
+  width: 150px;
+  height: auto;
+  margin-left: 15px;
 }
-#home {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 6px;
-    right: 20px;
+
+.page-title {
+  position: absolute;
+  left: 200px;
+  right: 200px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  color: #9ca3af;
 }
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #f97316;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #111827;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 15px;
+}
+
+.sidebar a {
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: #f97316;
+}
+
+.main {
+  grid-area: main;
+  padding: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #0b1220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === IMAGE === */
 #manga {
-    display: block;
-    margin: 0px auto;
-    max-width: 90%;
-    height: auto;
-}
-#comments {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 6px;
-    right: 90px;
+  display: block;
+  margin: 20px auto;
+  max-width: 90%;
+  height: auto;
 }
