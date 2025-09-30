@@ -1,52 +1,117 @@
 body {
     background-color: #0f1720;
     margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
 }
-.up {
+
+/* === GRID LAYOUT === */
+.layout {
+    display: grid;
+    grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 60px auto 60px;
+    min-height: 100vh;
+}
+
+.header {
+    grid-area: header;
     background-color: #0b1220;
-    height: 60px;
-    width: 100%;
-    display: flex;              
-    justify-content: center;    
-    align-items: center;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
 }
-#bold2 {
-    font-size: 15px;
+
+.logo img {
+    width: 150px;
+    height: auto;
+    margin-left: 15px;
+}
+
+.page-title {
+    position: absolute;
+    left: 200px;
+    right: 200px;
+    text-align: center;
+    font-size: 18px;
     font-weight: normal;
-    color: rgb(210, 207, 207);
-    margin: 0; 
-    left: 20px;
+    color: #9ca3af;
 }
-#back {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 6px;
-    left: 20px;
+
+.nav-links {
+    display: flex;
+    gap: 20px;
 }
-#home {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 6px;
-    right: 20px;
+
+.nav-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+.nav-links a:hover {
+    color: #f97316;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #111827;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: #d1d5db;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #f97316;
+}
+
+.main {
+    grid-area: main;
+    padding: 20px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #0b1220;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === COMMENT FORM === */
 #comment2 {
     display: block;
     margin: 20px auto;
-    width: 90%;
-    height: 200px;
+    width: 95%;
+    height: 150px;
     background-color: #0b1220;
     color: white;
     border: 1px solid #94a3b8;
     border-radius: 4px;
     padding: 10px;
     font-size: 1rem;
-    font-family: Arial, sans-serif;
 }
+
 #but {
     display: block;
-    margin: 1px 60px auto auto;
+    margin: 5px auto 20px auto;
     padding: 10px 20px;
     background-color: #f97316;
     color: #0f1720;
@@ -54,63 +119,67 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: normal;
-    transition: background-color 0.3s ease;
 }
+
+#but:hover {
+    background-color: #fb923c;
+}
+
+/* === COMMENTS LIST === */
 .comments {
-  width: 90%;
-  margin: 30px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    width: 95%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .comment {
-  display: flex;
-  gap: 12px;
-  background: #0b1220;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #1e293b;
+    display: flex;
+    gap: 12px;
+    background: #0b1220;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
 }
 
 .comment__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
 
 }
 
 .comment__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border: 5px solid #1e293b;
 }
 
 .comment__content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .comment__author {
-  font-size: 14px;
-  font-weight: bold;
-  color: #f3f4f6;
-  margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #f3f4f6;
+    margin-bottom: 4px;
 }
 
 .comment__text {
-  font-size: 14px;
-  color: #d1d5db;
-  margin: 0 0 6px 0;
+    font-size: 14px;
+    color: #d1d5db;
+    margin: 0 0 6px 0;
 }
 
 .comment__date {
-  font-size: 12px;
-  color: #9ca3af;
-  align-self: flex-end;
+    font-size: 12px;
+    color: #9ca3af;
+    align-self: flex-end;
 }
