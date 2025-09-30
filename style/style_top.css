@@ -28,6 +28,11 @@ body{
     text-decoration: underline;
 }
 
+.nav-image{
+    width: 92px;
+    height: 34px;
+}
+
 .block {
     display: flex;
     margin: 20px;
@@ -41,7 +46,8 @@ body{
 }
 
 .block:hover{
-    color: #492208;
+    background-color: #192230;
+    color: #cccccc;
 }
 
 .foa{

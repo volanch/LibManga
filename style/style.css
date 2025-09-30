@@ -7,15 +7,14 @@ body{
     background-color: #0f1720;
 }
 
-.foo h1{
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    color: #e6eef8;
-}
-
 .foo {
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
     background-color: #0b1220;
+    position: relative;
 }
 .foo a {
     padding: 8px 14px;
@@ -28,14 +27,32 @@ body{
     text-decoration: underline;
 }
 
+.nav-image{
+    width: 92px;
+    height: 34px;
+}
+
+.cat {
+    position: absolute;
+    left: 120px;
+    transform: translateY(-110%);
+}
+
+.tops{
+    color :  #f97316;
+    padding-top:10px;
+    display: flex;
+    justify-content: center;
+}
+
 .block {
     text-decoration: none;
-
     color: #e6eef8;
     padding: 15px;
     background-color: #1a2435;
     border-radius: 30px;
     min-width: 200px;
+    height: 380px;
 }
 
 .block img {
@@ -43,6 +60,7 @@ body{
     width: 200px;
     height: 300px;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 .block h4 {
     font-size: .8rem;
@@ -55,6 +73,14 @@ body{
     margin-top: 10px;
     font-family: "Trebuchet MS", Arial, sans-serif;
 }
+.block-link{
+    min-width: 200px;
+    max-height: 380px !important;
+}
+.block:hover {
+    background-color: #192230;
+    cursor: pointer;
+}
 
 .blocks-container {
     display: flex;
@@ -66,6 +92,54 @@ body{
 
 .item1{
     grid-row:auto;
+}
+
+.gallery {
+    margin:10px;
+    padding: 20px;
+    background-color: #0c161e;
+    grid-template-columns: 1fr;
+}
+
+.gallery img {
+    border-radius: 10px;
+    height: 100px;
+    width: 80px;
+    margin-left: 1px;
+}
+
+.gridery{
+    background-color: #1a2435;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    grid-template-rows: auto;
+    align-items: center;
+}
+.gridery:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+.gridery img {
+    grid-column: 1;
+}
+
+.gridery h4 {
+    color: #e6eef8;
+    grid-column: 2;
+}
+.gridery h4:hover {
+    color: #85827d;
+}
+
+.gridery h3 {
+    color: #e6eef8;
+    grid-column: 3;
+}
+.gridery h3:hover {
+    color: #85827d;
+    cursor: pointer;
 }
 
 .footer{
