@@ -37,8 +37,13 @@ body{
     background-color: #1a2435;
     border-radius: 30px;
     min-width: 200px;
-    width: 50%;
+    width: 80%;
 }
+
+.block:hover{
+    color: #492208;
+}
+
 .foa{
     margin-left:100px;
 }
