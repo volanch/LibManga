@@ -85,38 +85,6 @@ h2::before {
     color: #f97316;
 }
 
-.card-row {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin: 3rem auto;
-}
-
-.card {
-    flex: 1;
-    background: #141d2a;
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(23, 38, 83, 0.5);
-}
-
 .grid-layout {
     display: grid;
     grid-template-areas:"header header" "sidebar main" "footer footer";
@@ -171,6 +139,7 @@ h2::before {
     gap: 1.5rem;
     padding: 2rem;
 }
+
 
 .chapter-item {
     position: relative;
@@ -250,4 +219,75 @@ h2::before {
 .chapters-header img {
     max-height: 50px;
     width: auto;
+}
+
+/* mobile */
+body {
+    font-size: 14px;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+    body { font-size: 16px; }
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.5rem; }
+}
+
+/* desktop */
+@media (min-width: 992px) {
+    body { font-size: 18px; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.75rem; }
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.card {
+    background: #141d2a;
+    color: #e6eef8;
+    font-family: Verdana, Arial, sans-serif;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(23, 38, 83, 0.5);
+}
+
+@media (min-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+
+@media (min-width: 992px) {
+    .card {
+        flex: 1 1 calc(30% - 1rem);
+        max-width: calc(30% - 1rem);
+    }
 }
