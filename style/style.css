@@ -32,12 +32,6 @@ body{
     height: 34px;
 }
 
-.cat {
-    position: absolute;
-    left: 120px;
-    transform: translateY(-110%);
-}
-
 .tops{
     color :  #f97316;
     padding-top:10px;
