@@ -2,42 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LibManga</title>
-    <link rel = "stylesheet" href="style/style_top.css">
+    <title>LibManga — Top</title>
+    <link rel="stylesheet" href="style/style_top.css">
 </head>
 <body>
-    <header class="foo">
-        <nav>
-            <a class="nav-link" href="index.html">
-                <img class="nav-image" src="assets/logo.png" alt="logo">
-            </a>
-            <a href="top.html" class="cat">Categories</a>
-        </nav>
-    </header>
-    <div class="foa">
-        <a href="beginning/main.html" class="block">
-            <h4 style="color: yellow;"># 1</h4>
-            <img src="assets/cover_begin.webp" alt="cover">
-            <h4>Manhwa 2018</h4>
-            <h3>The Beginning After the End</h3>
+<header class="header">
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">
+            <img src="assets/logo.png" alt="LibManga logo">
         </a>
-        <br>
-        <a href="beginning/main.html" class="block">
-            <h4 style="color: silver;"># 2</h4>
-            <img src="assets/cover_nonam.webp" alt="cover">
-            <h4>Manhwa 2019</h4>
-            <h3>A monopoly on chance</h3>
+        <a href="top.html" class="nav-link">Categories</a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <h1 class="page-title">Top of All Time</h1>
+    <section class="top-list">
+        <a href="beginning/main.html" class="top-item">
+            <div class="rank" style="color: gold;">#1</div>
+            <img src="assets/menu-page/cover_begin.webp" alt="The Beginning After the End">
+            <div class="info">
+                <h4>Manhwa 2018</h4>
+                <h3>The Beginning After the End</h3>
+            </div>
         </a>
-        <br>
-        <a href="beginning/main.html" class="block">
-            <h4 style="color: coral;"># 3</h4>
-            <img src="assets/cover_lalka.jpg" alt="cover">
-            <h4>Manhwa 2022</h4>
-            <h3>ice flower knight</h3>
+
+        <a href="beginning/main.html" class="top-item">
+            <div class="rank" style="color: silver;">#2</div>
+            <img src="assets/menu-page/cover_nonam.webp" alt="A Monopoly on Chance">
+            <div class="info">
+                <h4>Manhwa 2019</h4>
+                <h3>A Monopoly on Chance</h3>
+            </div>
         </a>
-    </div>
-    <footer class="footer">
-        <p>© 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
-    </footer>
+
+        <a href="beginning/main.html" class="top-item">
+            <div class="rank" style="color: coral;">#3</div>
+            <img src="assets/menu-page/cover_lalka.jpg" alt="Ice Flower Knight">
+            <div class="info">
+                <h4>Manhwa 2022</h4>
+                <h3>Ice Flower Knight</h3>
+            </div>
+        </a>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>© 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
+</footer>
 </body>
 </html>
