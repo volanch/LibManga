@@ -291,3 +291,15 @@ body {
         max-width: calc(30% - 1rem);
     }
 }
+
+.carousel-container {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+}
