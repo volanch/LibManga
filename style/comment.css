@@ -4,8 +4,6 @@ body {
     font-family: Arial, sans-serif;
     color: white;
 }
-
-/* === GRID LAYOUT === */
 .layout {
     display: grid;
     grid-template-areas:
