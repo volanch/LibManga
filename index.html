@@ -3,85 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>LibManga</title>
-    <link rel = "stylesheet" href="style/style.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
-    <header class="foo">
-        <nav>
-            <a class="nav-link" href="index.html">
-                <img class="nav-image" src="assets/logo.png" alt="logo">
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/logo.png" alt="logo" width="100" height="35">
+        </a>
+        <div>
+            <a href="top.html" class="nav-link d-inline">Categories</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <h1 class="section-title">Top of this Year</h1>
+
+    <div class="row g-3 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="beginning/main.html" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="assets/menu-page/cover_begin.webp" class="card-img-top" alt="cover">
+                    <div class="card-body text-center">
+                        <h6 class="text-secondary">Manhwa 2018</h6>
+                        <h5 class="card-title text-light">The Beginning After the End</h5>
+                    </div>
+                </div>
             </a>
-            <a href="top.html" class="cat">Categories</a>
-        </nav>
-    </header>
-    <H1 class="tops">Top of this Year</H1>
-    <div class="blocks-container">
+        </div>
 
-        <a href="beginning/main.html" class="block-link">
-            <div class="block">
-                <img src="assets/cover_begin.webp" alt="cover">
-                <h4>Manhwa 2018</h4>
-                <h3>The Beginning After<br> the End</h3>
-            </div>
-        </a>
-        <a href="beginning/main.html" class="block-link">
-            <div class="block">
-                <img src="assets/cover_nonam.webp" alt="cover">
-                <h4>Manhwa 2019</h4>
-                <h3>A monopoly on chance</h3>
-            </div>
-        </a>
-        <a href="beginning/main.html" class="block-link">
-            <div class="block">
-                <img src="assets/cover_lalka.jpg" alt="cover">
-                <h4>Manhwa 2022</h4>
-                <h3>ice flower knight</h3>
-            </div>
-        </a>
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="beginning/main.html" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="assets/menu-page/cover_nonam.webp" class="card-img-top" alt="cover">
+                    <div class="card-body text-center">
+                        <h6 class="text-secondary">Manhwa 2019</h6>
+                        <h5 class="card-title text-light">A Monopoly on Chance</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="beginning/main.html" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="assets/menu-page/cover_lalka.jpg" class="card-img-top" alt="cover">
+                    <div class="card-body text-center">
+                        <h6 class="text-secondary">Manhwa 2022</h6>
+                        <h5 class="card-title text-light">Ice Flower Knight</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 
-    <div class = "gallery">
-        <H1 style= "color :  #f97316;">Last Updated</H1>
-        <br>
+    <h1 class="section-title">Last Updated</h1>
+    <div class="gallery">
 
-        <a>
-            <div class="gridery">
-                <img src="assets/Card%202.png" alt="cover">
-                <h4>101 chapter</h4>
-                <h3>ice flower knight</h3>
+        <a class="gallery-item text-decoration-none text-light" href="#">
+            <img src="assets/Card%202.png" alt="cover">
+            <div>
+                <h5>Ice Flower Knight</h5>
+                <p class="text-secondary m-0">101 chapter</p>
             </div>
         </a>
-        <br>
-        <a>
-            <div class="gridery">
-                <img src="assets/kaban.jpg" alt="cover">
-                <h4>37 chapter</h4>
-                <h3>Sutajio kabana</h3>
+
+        <a class="gallery-item text-decoration-none text-light" href="#">
+            <img src="assets/kaban.jpg" alt="cover">
+            <div>
+                <h5>Sutajio Kabana</h5>
+                <p class="text-secondary m-0">37 chapter</p>
             </div>
         </a>
-        <br>
-        <a>
-            <div class="gridery">
-                <img src="assets/cover.jpg" alt="cover">
-                <h4>143 chapter</h4>
-                <h3>The Begining after the end</h3>
+
+        <a class="gallery-item text-decoration-none text-light" href="#">
+            <img src="assets/cover.jpg" alt="cover">
+            <div>
+                <h5>The Beginning After the End</h5>
+                <p class="text-secondary m-0">143 chapter</p>
             </div>
         </a>
-        <br>
-        <a>
-            <div class="gridery">
-                <img src="assets/kaban.jpg" alt="cover">
-                <h4>36 chapter</h4>
-                <h3>Sutajio kabana</h3>
+
+        <a class="gallery-item text-decoration-none text-light" href="#">
+            <img src="assets/kaban.jpg" alt="cover">
+            <div>
+                <h5>Sutajio Kabana</h5>
+                <p class="text-secondary m-0">36 chapter</p>
             </div>
         </a>
+
     </div>
+</main>
 
+<footer class="footer">
+    <p>© 2025 LIB manga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
+</footer>
 
-    <footer class="footer">
-        <p>© 2025 LIB manga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
-    </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

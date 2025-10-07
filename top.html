@@ -3,41 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>LibManga</title>
-    <link rel = "stylesheet" href="style/style_top.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/style_top.css">
 </head>
 <body>
-    <header class="foo">
-        <nav>
-            <a class="nav-link" href="index.html">
-                <img class="nav-image" src="assets/logo.png" alt="logo">
-            </a>
-            <a href="top.html" class="cat">Categories</a>
-        </nav>
-    </header>
-    <div class="foa">
-        <a href="beginning/main.html" class="block">
-            <h4 style="color: yellow;"># 1</h4>
-            <img src="assets/cover_begin.webp" alt="cover">
-            <h4>Manhwa 2018</h4>
-            <h3>The Beginning After the End</h3>
-        </a>
-        <br>
-        <a href="beginning/main.html" class="block">
-            <h4 style="color: silver;"># 2</h4>
-            <img src="assets/cover_nonam.webp" alt="cover">
-            <h4>Manhwa 2019</h4>
-            <h3>A monopoly on chance</h3>
-        </a>
-        <br>
-        <a href="beginning/main.html" class="block">
-            <h4 style="color: coral;"># 3</h4>
-            <img src="assets/cover_lalka.jpg" alt="cover">
-            <h4>Manhwa 2022</h4>
-            <h3>ice flower knight</h3>
-        </a>
+<nav class="navbar navbar-expand-lg px-3">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.png" alt="logo" style="width: 92px; height: 34px;">
+    </a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="top.html" class="nav-link">Categories</a></li>
+        </ul>
     </div>
-    <footer class="footer">
-        <p>© 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
-    </footer>
+</nav>
+
+<div class="container mt-5">
+    <div class="row gy-3">
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="beginning/main.html" class="text-decoration-none text-light">
+                <div class="d-flex align-items-center p-3 manga-card">
+                    <h4 class="me-3" style="color: yellow;">#1</h4>
+                    <img src="assets/menu-page/cover_begin.webp" alt="cover" class="manga-cover me-3">
+                    <div>
+                        <h6 class="text-secondary mb-1">Manhwa 2018</h6>
+                        <h5>The Beginning After the End</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="beginning/main.html" class="text-decoration-none text-light">
+                <div class="d-flex align-items-center p-3 manga-card">
+                    <h4 class="me-3" style="color: silver;">#2</h4>
+                    <img src="assets/menu-page/cover_nonam.webp" alt="cover" class="manga-cover me-3">
+                    <div>
+                        <h6 class="text-secondary mb-1">Manhwa 2019</h6>
+                        <h5>A Monopoly on Chance</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a href="beginning/main.html" class="text-decoration-none text-light">
+                <div class="d-flex align-items-center p-3 manga-card">
+                    <h4 class="me-3" style="color: coral;">#3</h4>
+                    <img src="assets/menu-page/cover_lalka.jpg" alt="cover" class="manga-cover me-3">
+                    <div>
+                        <h6 class="text-secondary mb-1">Manhwa 2022</h6>
+                        <h5>Ice Flower Knight</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<footer>
+    © 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
