@@ -1,48 +1,84 @@
-const links = [
-    "beginning/main.html",
-    "beginning/main.html",
-    "beginning/main.html",
-    "beginning/main.html",
-    "beginning/main.html",
-    "beginning/main.html"
-];
+fetch("notations/index.json")
+    .then(res => res.json())
+    .then(cards => {
+        const grid = document.getElementById("top-grid");
+        for (let i = 0; i < cards.length; i++) {
+            const c = cards[i];
+            grid.innerHTML += `
+            <a href="${c.link}" class="card">
+              <img src="${c.img}" alt="cover">
+              <div class="card-text">
+                <h4>${c.year}</h4>
+                <h3>${c.title}</h3>
+              </div>
+            </a>`;
+        }
+    })
+    .catch(err => console.error("Ошибка загрузки JSON:", err));
 
-const imgs = [
-    "assets/menu-page/cover_begin.webp",
-    "assets/menu-page/cover_nonam.webp",
-    "assets/menu-page/cover_lalka.jpg",
-    "assets/menu-page/cover_54c49cfa.webp",
-    "assets/menu-page/cover_7673b861.webp",
-    "assets/menu-page/cover_a425b408.webp"
-];
+fetch("notations/index_gallery.json")
+    .then(res => res.json())
+    .then(data => {
+        const grid = document.getElementById("gallery-grid");
 
-const years = [
-    "Manhwa 2018",
-    "Manhwa 2019",
-    "Manhwa 2022",
-    "Manhwa 2019",
-    "Manhwa 2019",
-    "Manhwa 2019"
-];
-
-const titles = [
-    "The Beginning After<br>the End",
-    "A Monopoly on Chance",
-    "Ice Flower Knight",
-    "A Monopoly on Chance",
-    "A Monopoly on Chance",
-    "A Monopoly on Chance"
-];
-
-const grid = document.getElementById("top-grid");
-
-for (let i = 0; i < imgs.length; i++) {
-    grid.innerHTML += `
-    <a href="${links[i]}" class="card">
-      <img src="${imgs[i]}" alt="cover">
-      <div class="card-text">
-        <h4>${years[i]}</h4>
-        <h3>${titles[i]}</h3>
+        data.forEach(item => {
+            const card = document.createElement("a");
+            card.className = "gallery-item";
+            card.innerHTML = `
+      <img src="${item.img}" alt="cover">
+      <div class="gallery-info">
+        <h4>${item.chapter}</h4>
+        <h3>${item.title}</h3>
       </div>
-    </a>`;
-}
+    `;
+            grid.appendChild(card);
+        });
+    })
+    .catch(err => console.error("Ошибка загрузки JSON:", err));
+
+fetch("notations/index_trend.json")
+    .then(res => res.json())
+    .then(data => {
+        const grid = document.getElementById("trend-grid");
+
+        data.forEach(item => {
+            const card = document.createElement("a");
+            card.className = "gallery-item";
+            card.innerHTML = `
+      <img src="${item.img}" alt="cover">
+      <div class="gallery-info">
+        <h3>${item.title}</h3>
+      </div>
+    `;
+            grid.appendChild(card);
+        });
+    })
+    .catch(err => console.error("Ошибка загрузки JSON:", err));
+
+const main = document.getElementById("maid");
+const btn = document.getElementById("dark-theme");
+
+btn.addEventListener("click", () => {
+    main.classList.toggle("light-theme");
+    document.getElementById("header").classList.toggle("light-theme");
+    document.getElementById("footer").classList.toggle("light-theme");
+    document.getElementById("gall").classList.toggle("light-theme");
+
+    const cards = document.getElementsByClassName("card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.toggle("light-theme");
+    }
+
+    const galls = document.getElementsByClassName("gallery-item");
+    for (let i = 0; i < galls.length; i++) {
+        galls[i].classList.toggle("light-theme");
+    }
+});
+
+document.querySelector(".prev-btn").addEventListener("click", () => {
+    document.getElementById("top-grid").scrollBy({ left: -300, behavior: "smooth" });
+});
+
+document.querySelector(".next-btn").addEventListener("click", () => {
+    document.getElementById("top-grid").scrollBy({ left: 300, behavior: "smooth" });
+});

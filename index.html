@@ -4,61 +4,41 @@
     <meta charset="UTF-8">
     <title>LibManga</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/carousel.css">
 </head>
-<body>
-<header class="header">
+<body id = "maid">
+<header class="header" id="header">
     <nav class="nav">
         <a class="nav-logo" href="index.html">
             <img src="assets/logo.png" alt="logo">
         </a>
         <a href="top.html" class="nav-link">Categories</a>
+        <button id="dark-theme">dark theme</button>
     </nav>
 </header>
 
 <main>
-    <section class="top-section">
-        <h1 class="section-title">Top of this Year</h1>
-        <div class="top-grid">
+    <div class="carousel-container">
+        <button class="carousel-btn prev-btn">‹</button>
+        <div class="carousel-track" id="top-grid"></div>
+        <button class="carousel-btn next-btn">›</button>
+    </div>
 
+    <section class="gallery divider" id="gall">
+        <div>
+            <h1 class="section-title highlight">Last Updated</h1>
+            <div class="gallery-grid" id="gallery-grid">
+            </div>
         </div>
-    </section>
-
-    <section class="gallery">
-        <h1 class="section-title highlight">Last Updated</h1>
-        <div class="gallery-grid">
-            <a class="gallery-item">
-                <img src="assets/Card%202.png" alt="cover">
-                <div class="gallery-info">
-                    <h4>101 chapter</h4>
-                    <h3>Ice Flower Knight</h3>
-                </div>
-            </a>
-            <a class="gallery-item">
-                <img src="assets/kaban.jpg" alt="cover">
-                <div class="gallery-info">
-                    <h4>37 chapter</h4>
-                    <h3>Sutajio Kabana</h3>
-                </div>
-            </a>
-            <a class="gallery-item">
-                <img src="assets/cover.jpg" alt="cover">
-                <div class="gallery-info">
-                    <h4>143 chapter</h4>
-                    <h3>The Beginning After the End</h3>
-                </div>
-            </a>
-            <a class="gallery-item">
-                <img src="assets/kaban.jpg" alt="cover">
-                <div class="gallery-info">
-                    <h4>36 chapter</h4>
-                    <h3>Sutajio Kabana</h3>
-                </div>
-            </a>
+        <div>
+            <h1 class="section-title highlight">Trending</h1>
+            <div class="gallery-grid" id="trend-grid">
+            </div>
         </div>
     </section>
 </main>
 
-<footer class="footer">
+<footer class="footer" id="footer">
     <p>© 2025 LIB manga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
 </footer>
 </body>

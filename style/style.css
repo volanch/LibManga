@@ -1,4 +1,17 @@
 
+:root {
+    --body-col-dark: #e6eef8;
+    --body-col-light: #0f1717;
+
+    --body-bg-dark: #0f1720;
+    --body-bg-light: #fff;
+
+    --header-bg-dark: #0b1220;
+    --header-bg-light: #eaeaea;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,15 +19,23 @@
 }
 
 body {
-    background-color: #0f1720;
-    color: #e6eef8;
+    background-color: var(--body-bg-dark);
+    color: var(--body-col-dark);
     font-family: "Trebuchet MS", Arial, sans-serif;
     line-height: 1.5;
 }
 
+body.light-theme {
+    background-color: var(--body-bg-light);
+    color: var(--body-col-light);
+}
+
 .header {
-    background-color: #0b1220;
+    background-color: var(--header-bg-dark);
     padding: 10px 5%;
+}
+.header.light-theme {
+    background-color: var(--header-bg-light);
 }
 
 .nav {
@@ -60,13 +81,14 @@ body {
 }
 
 .card {
-    background-color: #1a2435;
+    flex: 0 0 auto;
+    background-color: var(--header-bg-dark);
     border-radius: 20px;
     overflow: hidden;
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    max-width: 150px;
+    width: 160px;
 }
 
 .card:hover {
@@ -88,22 +110,41 @@ body {
     color: #88898c;
     font-size: 0.8rem;
 }
+.card-text.light-theme h4 {
+    color: #999893;
+}
 .card-text h3{
     font-size: 0.85rem;
 }
 
+.card.light-theme {
+    background-color: var(--header-bg-light);
+}
+
+.divider{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
 .gallery {
-    background-color: #0c161e;
+    background-color: var(--header-bg-dark);
     padding: 35px 5%;
     border-radius: 10px;
     margin-bottom: 50px;
 }
 
+.gallery.light-theme {
+    background-color: var(--header-bg-light);
+}
+
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 15px;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
+
+
 
 .gallery-item {
     display: flex;
@@ -114,6 +155,9 @@ body {
     color: inherit;
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.gallery-item.light-theme {
+    background-color: #9ca3af;
 }
 
 .gallery-item:hover {
@@ -147,10 +191,14 @@ body {
 .footer {
     text-align: center;
     padding: 15px;
-    background-color: #0f1720;
+    background-color: var(--header-bg-dark);
     color: #94a3b8;
     font-size: 0.9rem;
     border-top: 1px solid #1a2435;
+}
+
+.footer.light-theme{
+    background-color: var(--header-bg-light);
 }
 
 @media (max-width: 1024px) {
