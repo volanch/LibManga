@@ -54,6 +54,17 @@ body {
     margin: 0 auto 50px;
     padding: 0 200px 0;
 }
+.btns{
+    text-align: center;
+}
+
+.button{
+
+}
+
+.button.light{
+
+}
 
 .top-item {
     display: flex;

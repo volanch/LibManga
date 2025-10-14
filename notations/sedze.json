@@ -1,0 +1,35 @@
+[
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_begin.webp",
+    "year": "Manhwa 2018",
+    "title": "The Beginning After the End",
+    "rank": "#1",
+    "color": "gold"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_nonam.webp",
+    "year": "Manhwa 2019",
+    "title": "A Monopoly on Chance",
+    "rank": "#2",
+    "color": "silver"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_0abd95f5.webp",
+    "year": "Manhwa 2022",
+    "title": "Ice Flower ",
+    "rank": "#3",
+    "color": "coral"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_lalka.jpg",
+    "year": "Manhwa 2022",
+    "title": "Ice Flower Knight",
+    "rank": "#4",
+    "color": "black"
+  }
+
+]

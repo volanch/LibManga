@@ -82,3 +82,5 @@ document.querySelector(".prev-btn").addEventListener("click", () => {
 document.querySelector(".next-btn").addEventListener("click", () => {
     document.getElementById("top-grid").scrollBy({ left: 300, behavior: "smooth" });
 });
+
+document.getElementById("swag").innerHTML = new Date().toLocaleDateString("en-US");
