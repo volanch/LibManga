@@ -22,14 +22,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 90px;
     position: relative;
 }
 
 .logo img {
     width: 100px;
     height: auto;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 .page-title {
@@ -48,7 +48,7 @@ body {
 }
 
 .nav-links a {
-    color: #d1d5db;
+    color: #9ca3af;
     text-decoration: none;
     font-weight: bold;
 }
@@ -56,7 +56,17 @@ body {
 .nav-links a:hover {
     color: #f97316;
 }
-
+.buttonnigga{
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 100%;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    border: 1px solid;
+}
 .sidebar {
     grid-area: sidebar;
     background-color: #111827;
@@ -73,7 +83,7 @@ body {
 }
 
 .sidebar a {
-    color: #d1d5db;
+    color: #9ca3af;
     text-decoration: none;
 }
 
@@ -83,7 +93,7 @@ body {
 
 .main {
     grid-area: main;
-    padding:20px;
+    padding: 0;
 }
 
 .footer {
@@ -93,10 +103,9 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 #manga {
     display: block;
-    margin: auto;
+    margin: 0 auto;
     max-width: 90%;
     height: auto;
 }

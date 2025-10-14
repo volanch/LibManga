@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <title>AituLIB - Comments</title>
   <link rel="stylesheet" href="../style/comment.css">
+    <script src = "../scripts/black_theme.js" defer></script>
 </head>
-<body>
+<body id="body" style="background-color:rgb(15, 23, 32);">
 <div class="layout">
     <header class="header">
     <div class="logo">
@@ -15,7 +16,7 @@
     <nav class="nav-links">
       <a href="chapters.html">Chapters</a>
       <a href="comments.html">Comments</a>
-      <a href="main.html">Home</a>
+        <button type="button" onclick="black_theme()" class = "buttonnigga"></button>
     </nav>
   </header>
   <aside class="sidebar">
@@ -27,7 +28,7 @@
   </aside>
     <main class="main">
 
-    <form action="">
+    <form action="" >
       <textarea name="comment" id="comment2" placeholder="Leave your comment here..."></textarea>
       <br>
       <button type="submit" id="but">Submit</button>
