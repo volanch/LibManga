@@ -1,8 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("top-grid");
     const buttons = document.querySelectorAll(".button");
+    const themeToggle = document.getElementById("theme-toggle");
 
-    // Функция загрузки данных
+    // === Тема ===
+    const currentTheme = localStorage.getItem("theme") || "dark";
+    if (currentTheme === "light") {
+        document.documentElement.classList.add("light");
+        themeToggle.textContent = "☀️";
+    }
+
+    themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("light");
+        const isLight = document.documentElement.classList.contains("light");
+        themeToggle.textContent = isLight ? "☀️" : "🌙";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+
+    // === Загрузка данных ===
     function loadCategory(category) {
         fetch(`notations/${category}.json`)
             .then(res => {
@@ -10,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(data => {
-                container.innerHTML = ""; // Очистка перед загрузкой
+                container.innerHTML = "";
                 data.forEach(item => {
                     container.innerHTML += `
                         <a href="${item.link}" class="top-item">
@@ -20,21 +35,23 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <h4>${item.year}</h4>
                                 <h3>${item.title}</h3>
                             </div>
-                        </a>
-                    `;
+                        </a>`;
                 });
             })
             .catch(err => console.error(`Ошибка загрузки ${category}.json:`, err));
     }
 
-    // Привязка обработчиков к кнопкам
+    // === Обработка кнопок ===
     buttons.forEach(button => {
         button.addEventListener("click", () => {
-            const category = button.textContent.trim().toLowerCase(); // senen / sedze
+            buttons.forEach(b => b.classList.remove("active"));
+            button.classList.add("active");
+            const category = button.textContent.trim().toLowerCase();
             loadCategory(category);
         });
     });
 
-    // Загружаем первую категорию по умолчанию
+    // Загрузка категории по умолчанию
+    buttons[0].classList.add("active");
     loadCategory("senen");
 });
