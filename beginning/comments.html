@@ -19,21 +19,43 @@
         <button type="button" onclick="black_theme()" class = "buttonnigga"></button>
     </nav>
   </header>
-  <aside class="sidebar">
-    <ul>
-      <li><a href="chapters.html">Chapters</a></li>
-      <li><a href="comments.html">Comments</a></li>
-      <li><a href="main.html">Home</a></li>
-    </ul>
-  </aside>
+    <aside class="sidebar">
+        <ul class="sidebar-list">
+            <li><a href="chapters.html">Chapters</a></li>
+            <li><a href="comments.html">Comments</a></li>
+            <li><a href="main.html">Home</a></li>
+            <li class="icon-item">
+                <img src="../assets/autoresetion.png"
+                     alt="Sign in"
+                     class="auth-icon"
+                     id="openPopupBtn">
+            </li>
+        </ul>
+    </aside>
+    <section class="popup-section">
+        <div id="popupOverlay" class="popup-overlay" aria-hidden="true">
+            <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+                <span id="closePopupBtn" class="close-btn" aria-label="Close">&times;</span>
+                <h2 id="popupTitle">Autorozation</h2>
+                <p>To continue please sign up</p>
+                <form id="subscribeForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <button type="submit" class="submit-btn">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </section>
     <main class="main">
-
-    <form action="" >
-      <textarea name="comment" id="comment2" placeholder="Leave your comment here..."></textarea>
-      <br>
-      <button type="submit" id="but">Submit</button>
-    </form>
-
+        <form id="commentForm">
+            <textarea name="comment" id="comment2" placeholder="Leave your comment here..."></textarea>
+            <br>
+            <button type="submit" id="but">Submit</button>
+        </form>
     <div class="comments">
       <div class="comment">
         <div class="comment__avatar">
