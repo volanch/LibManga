@@ -5,14 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("subscribeForm");
     const emailInput = document.getElementById("email");
     const errorMsg = document.getElementById("errorMsg");
+    const resetBtn = document.getElementById("resetBtn");
+    const successMsg = document.getElementById("successMsg");
 
-    openBtn.addEventListener("click", () => {
-        overlay.style.display = "flex";
-    });
+    const popupManager = {
+        isOpen: false,
+        open() {
+            overlay.style.display = "flex";
+            this.isOpen = true;
+        },
+        close() {
+            overlay.style.display = "none";
+            this.isOpen = false;
+        }
+    };
 
-    closeBtn.addEventListener("click", () => {
-        overlay.style.display = "none";
-    });
+    openBtn.addEventListener("click", () => popupManager.open());
+    closeBtn.addEventListener("click", () => popupManager.close());
 
     overlay.addEventListener("click", (event) => {
         if (event.target === overlay) {
@@ -34,8 +43,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
         errorMsg.style.display = "none";
         emailInput.style.borderColor = "";
-        alert("Спасибо за подписку!");
-        overlay.style.display = "none";
-        form.reset();
+
+        const formData = { email: emailValue };
+
+
+        sendFormData(formData)
+            .then(success => {
+                if (success) {
+                    successMsg.textContent = "Спасибо за подписку!";
+                    successMsg.style.display = "block";
+                    setTimeout(() => {
+                        successMsg.style.display = "none";
+                        overlay.style.display = "none";
+                        form.reset();
+                    }, 2000);
+                } else {
+                    errorMsg.textContent = "Произошла ошибка при отправке.";
+                    errorMsg.style.display = "block";
+                }
+            });
     });
+
+    resetBtn.addEventListener("click", () => {
+        const sound = new Audio("../assets/sounds/button-press.mp3");
+        sound.play();
+        document.querySelectorAll('input').forEach(input => input.value = '');
+        errorMsg.style.display = "none";
+        emailInput.style.borderColor = "";
+    });
+
+    async function sendFormData(data) {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return response.ok;
+    }
 });

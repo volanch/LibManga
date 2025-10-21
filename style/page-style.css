@@ -42,6 +42,12 @@ p {
     gap: 2rem;
 }
 
+.nav-item.active {
+    background-color: rgba(64, 77, 90, 0.55);
+    color: white;
+    outline: none;
+}
+
 .nav a {
     padding: 0.25rem 0.5rem;
     color: #f97316;
@@ -418,7 +424,24 @@ body {
     border: 1px solid #ccc;
 }
 
+.btn-layout{
+    display: flex;
+    justify-content: space-between;
+}
+
 .submit-btn {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.reset-btn {
     background-color: #222;
     color: #fff;
     border: none;
@@ -509,6 +532,10 @@ body {
 
 .light .button-style:hover {
     background: #fb8a3a;
+}
+
+.light .faq-question {
+    background-color: #617070;
 }
 
 .light .chapter-item .caption {
