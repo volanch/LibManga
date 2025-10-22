@@ -3,6 +3,7 @@ const topGrid = document.getElementById("top-grid");
 const galleryGrid = document.getElementById("gallery-grid");
 const trendGrid = document.getElementById("trend-grid");
 const langButton = document.getElementById("lang");
+const music = document.getElementById("myAudio");
 
 function ru(){
     fetch("notations/ru/index.json")
@@ -121,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     langButton.addEventListener("click", () => {
+        music.play();
         if (nowTheme === "en") {
             nowTheme = "ru";
             langButton.textContent = "RU"
