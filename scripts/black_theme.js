@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.getElementById('comment2');
     const list = document.querySelector('.comments');
     if (!form || !textarea || !list) return;
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const text = textarea.value.trim();
         if (!text) { alert('Введите комментарий'); return; }
-
+        const sound = new Audio("../assets/sounds/Tamer.mp3");
+        sound.play();
         const author = 'Your comment';
         const now = new Date();
         const pad = (n) => String(n).padStart(2, '0');
@@ -23,22 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = '../assets/user.png';
         img.alt = 'user';
         avatar.appendChild(img);
-
         const content = document.createElement('div');
         content.className = 'comment__content';
-
         const spanAuthor = document.createElement('span');
         spanAuthor.className = 'comment__author';
         spanAuthor.textContent = author;
-
         const pText = document.createElement('p');
         pText.className = 'comment__text';
         pText.textContent = text;
-
         const spanDate = document.createElement('span');
         spanDate.className = 'comment__date';
         spanDate.textContent = dateStr;
-
         content.append(spanAuthor, pText, spanDate);
         item.append(avatar, content);
         list.prepend(item);
@@ -66,19 +61,34 @@ document.addEventListener("DOMContentLoaded", () => {
     openBtn.addEventListener("click", open);
     closeBtn.addEventListener("click", close);
 
-    overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) close();
-    });
     document.addEventListener('keydown', (e) => {
         if (overlay.style.display === "flex" && e.key === 'Escape') close();
     });
 
+    form.addEventListener('reset', (e) => {
+        if (!confirm('Очистить форму?')) e.preventDefault();
+
+    })
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Thank you for signing up!");
-        form.reset();
-        close();
+        const fd = new FormData(form);
+        fetch("https://jsonplaceholder.typicode.com/posts",{
+            method: 'POST',
+            body: fd
+        })
+        .then(res => res.json())
+        .then(Callback)
+            .catch(Error);
     });
+    function Callback(data) {
+        console.log("Response:", data);
+        alert("Your data sent to the server successfully");
+    }
+    function Error(err) {
+        console.error(err);
+        alert("Error");
+    }
 });
 function black_theme() {
     const body    = document.getElementById("body");
@@ -116,6 +126,24 @@ function black_theme() {
         document.querySelectorAll('.sidebar a').forEach(a => a.style.color = '#9ca3af');
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const greeting = document.getElementById("greeting");
+    const hour = new Date().getHours();
+    let message;
+
+    switch (true) {
+        case (hour < 12):
+            message = "Good morning! ☀️";
+            break;
+        case (hour < 18):
+            message = "Good afternoon! 🌤️";
+            break;
+        default:
+            message = "Good evening! 🌙";
+    }
+
+    greeting.textContent = message;
+});
 
 
 
