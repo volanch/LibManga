@@ -1,0 +1,82 @@
+[
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_begin.webp",
+    "year": "Manhwa 2018",
+    "title": "The Beginning After the End",
+    "rank": "#1",
+    "color": "gold"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_nonam.webp",
+    "year": "Manhwa 2019",
+    "title": "A Monopoly on Chance",
+    "rank": "#2",
+    "color": "silver"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_lalka.jpg",
+    "year": "Manhwa 2022",
+    "title": "Ice Flower Knight",
+    "rank": "#3",
+    "color": "coral"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_54c49cfa.webp",
+    "year": "Manhwa 2024",
+    "title": "Dungeon courier",
+    "rank": "#4",
+    "color": "black"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_7673b861.webp",
+    "year": "Manhwa 2025",
+    "title": "The genius magician who sees the rainbow",
+    "rank": "#5",
+    "color": "black"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_a425b408.webp",
+    "year": "Manhwa 2023",
+    "title": "Half-breed bastard",
+    "rank": "#6",
+    "color": "black"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_0abd95f5.webp",
+    "year": "Manhwa 2018",
+    "title": "Solo leveling",
+    "rank": "#7",
+    "color": "black"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_8b00e9f3.webp",
+    "year": "Manhwa 2021",
+    "title": "Solo Max-Level Newbie",
+    "rank": "#8",
+    "color": "black"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/menu-page/cover_aafca556.webp",
+    "year": "Manhwa 2025",
+    "title": "Return of the Corpse King",
+    "rank": "#9",
+    "color": "black"
+  },
+  {
+    "link": "beginning/main.html",
+    "img": "assets/kaban.jpg",
+    "year": "Manhwa 2025",
+    "title": "kaban",
+    "rank": "#10",
+    "color": "black"
+  }
+]

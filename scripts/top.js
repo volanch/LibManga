@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".button");
     const themeToggle = document.getElementById("theme-toggle");
 
-    // === Тема ===
     const currentTheme = localStorage.getItem("theme") || "dark";
     if (currentTheme === "light") {
         document.documentElement.classList.add("light");
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("theme", isLight ? "light" : "dark");
     });
 
-    // === Загрузка данных ===
     function loadCategory(category) {
         fetch(`notations/${category}.json`)
             .then(res => {
@@ -41,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(err => console.error(`Ошибка загрузки ${category}.json:`, err));
     }
 
-    // === Обработка кнопок ===
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             buttons.forEach(b => b.classList.remove("active"));
@@ -51,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Загрузка категории по умолчанию
     buttons[0].classList.add("active");
     loadCategory("senen");
 });

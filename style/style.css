@@ -87,7 +87,6 @@ body {
     margin: 30px 0 20px;
 }
 
-/* --- Карусель --- */
 .carousel-container {
     display: flex;
     align-items: center;
@@ -223,6 +222,14 @@ body {
     font-size: 0.9rem;
     border-top: 1px solid #1a2435;
 }
+
+.count {
+    text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    color: var(--accent);
+}
+
 
 @media (max-width: 900px) {
     .divider {
