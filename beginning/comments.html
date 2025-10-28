@@ -5,7 +5,11 @@
   <title>AituLIB - Comments</title>
   <link rel="stylesheet" href="../style/comment.css">
     <script src = "../scripts/black_theme.js" defer></script>
-</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- новый файл с заданиями -->
+<script src="../scripts/jquery_tasks.js" defer></script>
+<home/>
 <body id="body" style="background-color:rgb(15, 23, 32);">
 <div class="layout">
     <header class="header">
@@ -13,8 +17,15 @@
       <img src="../assets/logo.png" alt="AituLIB logo">
     </div>
     <h2 class="page-title">Comments</h2>
-    <nav class="nav-links">
+
+        <!-- Part 2: Scroll progress -->
+        <div id="scrollProgress"><div class="scroll-bar"></div></div>
+
+        <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+        <nav class="nav-links">
       <a href="chapters.html">Chapters</a>
+
       <a href="comments.html">Comments</a>
         <button type="button" onclick="black_theme()" class = "buttonnigga"></button>
     </nav>
@@ -24,6 +35,13 @@
             <li><a href="chapters.html">Chapters</a></li>
             <li><a href="comments.html">Comments</a></li>
             <li><a href="main.html">Home</a></li>
+            <li class="sidebar-metric">
+                <div class="stat stat--mini">
+                    <div class="num" id="usersCount" data-target="1000">0</div>
+                    <div class="label">Users</div>
+                </div>
+            </li>
+
             <li class="icon-item">
                 <img src="../assets/autoresetion.png"
                      alt="Sign in"

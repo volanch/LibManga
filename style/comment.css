@@ -335,3 +335,55 @@ body.dark .popup-box input {
     opacity: 0.9;
     cursor: pointer;
 }
+/* Search + suggestions */
+.search-wrap{width:95%;margin:10px auto 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#liveSearch{flex:1;min-width:260px;background:#0b1220;color:#e5e7eb;border:1px solid #334155;border-radius:6px;padding:10px}
+.suggest-list{list-style:none;margin:0;padding:6px;background:#0b1220;border:1px solid #1f2937;border-radius:6px;display:none;max-height:180px;overflow:auto}
+.suggest-list li{padding:6px 8px;cursor:pointer}
+.suggest-list li:hover{background:#111827}
+.hl{background:#fde68a;color:#111827;padding:0 2px;border-radius:3px}
+.hl-toggle{font-size:.9rem;color:#9ca3af}
+
+/* Scroll progress */
+#scrollProgress{position:fixed;left:0;top:0;width:100%;height:4px;background:rgba(255,255,255,.08);z-index:2000}
+#scrollProgress .scroll-bar{height:100%;width:0;background:linear-gradient(90deg,#f97316,#fb923c)}
+
+/* Counters */
+.stats{width:95%;margin:14px auto;display:grid;grid-template-columns:repeat(3,minmax(120px,1fr));gap:12px}
+.stat{background:#0b1220;border:1px solid #1e293b;border-radius:8px;padding:16px;text-align:center}
+.stat .num{font-size:28px;font-weight:700}
+.stat .label{color:#9ca3af}
+
+/* Submit spinner on comment submit */
+.btn-busy{position:relative;pointer-events:none;opacity:.8}
+.btn-busy::after{
+    content:"";position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    width:16px;height:16px;border:2px solid #0f1720;border-top-color:transparent;border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+
+/* Toasts */
+#toastContainer{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;z-index:3000}
+.toast{background:#111827;color:#e5e7eb;border:1px solid #1f2937;border-radius:8px;padding:10px 12px;min-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.25);opacity:.98}
+.toast.ok{border-color:#16a34a}
+.toast.warn{border-color:#f59e0b}
+
+/* Copy button inside comment */
+.comment__actions{margin-top:6px;display:flex;gap:8px}
+.copy-btn{background:#0b1220;border:1px solid #334155;color:#9ca3af;border-radius:6px;font-size:.85rem;padding:6px 10px;cursor:pointer}
+.copy-btn.copied{border-color:#16a34a;color:#16a34a}
+
+/* Lazy images (placeholder look) */
+img.lazy-blur{filter:blur(6px);transition:filter .3s ease}
+img.lazy-loaded{filter:blur(0)}
+
+/* Мини-карточка метрики в сайдбаре */
+.sidebar-metric { margin-top: 12px; }
+.stat--mini{
+    background:#0b1220; border:1px solid #1e293b; border-radius:8px;
+    padding:12px; text-align:center;
+}
+.stat--mini .num{ font-size:22px; font-weight:700; }
+.stat--mini .label{ color:#9ca3af; font-size:12px; }
+
