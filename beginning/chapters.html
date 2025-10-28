@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../style/page-style.css">
     <title>Chapters - The Beginning After The End</title>
 </head>
 <body>
+<div id="toast"></div>
 <div class="chapters-layout">
-
     <header class="chapters-header">
         <img src="../assets/logo.png" alt="Logo">
         <h1 class="site-title">The Beginning After The End</h1>
@@ -18,59 +19,79 @@
     </header>
 
     <main class="chapters-main">
+        <input type="text" id="searchBar" placeholder="Search chapter..." class="search-bar">
+        <ul id="suggestions" class="suggestions-list"></ul>
         <div class="chapters-gallery">
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 1.png" alt="Chapter 1">
+                    <img src="" data-src="../assets/Card 1.png" alt="Chapter 1" class="lazy-image">
                     <div class="caption">Chapter 1</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 2.png" alt="Chapter 2">
+                    <img src="" data-src="../assets/Card 2.png" alt="Chapter 2" class="lazy-image">
                     <div class="caption">Chapter 2</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 3.png" alt="Chapter 3">
+                    <img src="" data-src="../assets/Card 3.png" alt="Chapter 3" class="lazy-image">
                     <div class="caption">Chapter 3</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 4.png" alt="Chapter 4">
+                    <img src="" data-src="../assets/Card 4.png" alt="Chapter 4" class="lazy-image">
                     <div class="caption">Chapter 4</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 5.png" alt="Chapter 5">
+                    <img src="" data-src="../assets/Card 5.png" alt="Chapter 5" class="lazy-image">
                     <div class="caption">Chapter 5</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 6.png" alt="Chapter 6">
+                    <img src="" data-src="../assets/Card 6.png" alt="Chapter 6" class="lazy-image">
                     <div class="caption">Chapter 6</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 7.png" alt="Chapter 7">
+                    <img src="" data-src="../assets/Card 7.png" alt="Chapter 7" class="lazy-image">
                     <div class="caption">Chapter 7</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 8.png" alt="Chapter 8">
+                    <img src="" data-src="../assets/Card 8.png" alt="Chapter 8" class="lazy-image">
                     <div class="caption">Chapter 8</div>
                 </a>
             </div>
             <div class="chapter-item">
                 <a href="page.html">
-                    <img src="../assets/Card 9.png" alt="Chapter 9">
+                    <img src="" data-src="../assets/Card 9.png" alt="Chapter 9" class="lazy-image">
                     <div class="caption">Chapter 9</div>
+                </a>
+            </div>
+            <div class="chapter-item">
+                <a href="page.html">
+                    <img src="" data-src="../assets/Card 10.png" alt="Chapter 10" class="lazy-image">
+                    <div class="caption">Chapter 10</div>
+                </a>
+            </div>
+            <div class="chapter-item">
+                <a href="page.html">
+                    <img src="" data-src="../assets/Card 11.png" alt="Chapter 11" class="lazy-image">
+                    <div class="caption">Chapter 11</div>
+                </a>
+            </div>
+            <div class="chapter-item">
+                <a href="page.html">
+                    <img src="" data-src="../assets/Card 12.png" alt="Chapter 12" class="lazy-image">
+                    <div class="caption">Chapter 12</div>
                 </a>
             </div>
         </div>

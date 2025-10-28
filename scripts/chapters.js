@@ -81,3 +81,79 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.ok;
     }
 });
+
+$(document).ready(function () {
+    $("#searchBar").on("keyup", function () {
+        const query = $(this).val().toLowerCase();
+        $(".chapter-item").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().includes(query));
+        });
+    });
+});
+
+$(document).ready(function () {
+    const chapters = $(".chapter-item .caption").map(function () {
+        return $(this).text().trim();
+    }).get();
+
+    $("#searchBar").on("input", function () {
+        const query = $(this).val().toLowerCase();
+        const suggestionsBox = $("#suggestions");
+        suggestionsBox.empty();
+
+        if (query.length === 0) return;
+
+        const matches = chapters.filter(c => c.toLowerCase().includes(query)).slice(0, 4);
+
+        matches.forEach(match => {
+            suggestionsBox.append(`<li class="suggestion-item">${match}</li>`);
+        });
+    });
+
+    $(document).on("click", ".suggestion-item", function () {
+        const selected = $(this).text();
+        $("#searchBar").val(selected);
+        $("#suggestions").empty();
+
+        $(".chapter-item").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().includes(selected.toLowerCase()));
+        });
+    });
+});
+
+$("#subscribeForm").on("submit", function (e) {
+    e.preventDefault();
+    const btn = $(".submit-btn");
+    btn.prop("disabled", true);
+    btn.html('<span class="spinner"></span> Please wait...');
+
+    setTimeout(() => {
+        btn.prop("disabled", false).text("Subscribe");
+        alert("Form submitted successfully!");
+    }, 2000);
+});
+
+function showToast(message) {
+    $("#toast").text(message).addClass("show");
+    setTimeout(() => $("#toast").removeClass("show"), 3000);
+}
+$("#openPopupBtn").on("click", function () {
+    showToast("Popup opened successfully!");
+});
+
+$(window).on("scroll", function () {
+    $(".lazy-image").each(function () {
+        const $img = $(this);
+        if ($img.offset().top < $(window).scrollTop() + $(window).height() + 200) {
+            const src = $img.attr("data-src");
+            if (src) {
+                $img.attr("src", src).removeAttr("data-src");
+                $img.on("load", function () {
+                    $img.addClass("loaded");
+                });
+            }
+        }
+    });
+});
+
+$(window).trigger("scroll");

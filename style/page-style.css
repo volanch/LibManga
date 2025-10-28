@@ -61,7 +61,13 @@ p {
 }
 
 .button-style {
-    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.25rem;
+    min-width: 50px;
+    min-height: 35px;
     background: #f97316;
     color: #0f1720;
     border: none;
@@ -69,6 +75,14 @@ p {
     cursor: pointer;
     transition: background 0.3s ease;
     text-decoration: none;
+}
+
+.buttons-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 1rem;
 }
 
 .button-style:hover {
@@ -150,7 +164,6 @@ h2::before {
     gap: 1.5rem;
     padding: 2rem;
 }
-
 
 .chapter-item {
     position: relative;
@@ -466,6 +479,174 @@ body {
     cursor: pointer;
 }
 
+.search-bar {
+    display: block;
+    width: 300px;
+    margin: 15px auto;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#search-bar-main {
+    display: block;
+    width: 85%;
+    margin: 15px auto;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.suggestions-list {
+    position: absolute;
+    left: 37.5%;
+    width: 25%;
+    background: #0f1720;
+    border-radius: 0 0 6px 6px;
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 0;
+    margin-top: -5px;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: rgba(54, 61, 69, 0.51);
+}
+
+.search-bar:focus {
+    border-color: #6c63ff;
+    outline: none;
+}
+
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: linear-gradient(to right, #7d96e8, #184193);
+    width: 0;
+    z-index: 9999;
+    transition: width 0.2s ease;
+}
+
+.stats {
+    text-align: center;
+    margin-top: 40px;
+    font-family: "Poppins", sans-serif;
+}
+
+.stats h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: white;
+}
+.count {
+    color: #fb1653;
+    font-weight: bold;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #555;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 1001;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}
+
+.copy-container {
+    position: relative;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+}
+
+.tooltip.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
@@ -563,4 +744,25 @@ body {
             color 0.4s ease,
             border-color 0.4s ease,
             box-shadow 0.4s ease;
+}
+
+.light .search-bar {
+    background-color: #fff;
+    color: #000;
+    border-color: #bbb;
+}
+
+.light #search-bar-main {
+    background-color: #fff;
+    color: #000;
+    border-color: #bbb;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.light #scrollProgress {
+    background: linear-gradient(to right, #d7d2cc, #4e6d87);
 }

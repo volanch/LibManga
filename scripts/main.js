@@ -78,3 +78,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
     greeting.textContent = message;
 });
+
+$(document).ready(function () {
+    $("#search-bar-main").on("keyup", function () {
+        const keyword = $(this).val();
+        $(".faq-answer p").each(function () {
+            const text = $(this).text();
+            if (keyword.length > 0) {
+                const regex = new RegExp(`(${keyword})`, "gi");
+                const newText = text.replace(regex, "<span class='highlight'>$1</span>");
+                $(this).html(newText);
+            } else {
+                $(this).html(text);
+            }
+        });
+    });
+});
+
+$(window).on("scroll", function () {
+    const scrollTop = $(window).scrollTop();
+    const docHeight = $(document).height() - $(window).height();
+    const progress = (scrollTop / docHeight) * 100;
+    $("#scrollProgress").css("width", progress + "%");
+});
+
+$(document).ready(function () {
+    $(".count").each(function () {
+        $(this).prop("Counter", 0).animate(
+            { Counter: $(this).data("count") },
+            {
+                duration: 3000,
+                easing: "swing",
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            }
+        );
+    });
+});
+
+$(document).ready(function () {
+    $("#copyBtn").on("click", function () {
+        const textToCopy = $("#copyText").text().trim();
+        const tooltip = $("#copyTooltip");
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            $(this).text("✓");
+            setTimeout(() => $(this).text("Copy"), 2000);
+        });
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            tooltip.text("Copied!").addClass("show");
+
+            setTimeout(() => {
+                tooltip.removeClass("show");
+            }, 2000);
+        }).catch(() => {
+            tooltip.text("Failed!").addClass("show");
+            setTimeout(() => {
+                tooltip.removeClass("show");
+            }, 2000);
+        });
+    });
+});
