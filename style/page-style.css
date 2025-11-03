@@ -264,6 +264,20 @@ body {
     h2 { font-size: 1.75rem; }
 }
 
+@media (max-width: 767px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+    .intro-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cover-side {
+        width: 80%;
+        height: auto;
+    }
+}
+
 .card-row {
     display: flex;
     flex-wrap: wrap;
@@ -765,4 +779,18 @@ body {
 
 .light #scrollProgress {
     background: linear-gradient(to right, #d7d2cc, #4e6d87);
+}
+
+.light .stats h3{
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #0f1717;
+}
+
+.light .suggestions-list {
+    background-color: #fff;
+}
+
+.light .button-style{
+    color: #0f1717;
 }

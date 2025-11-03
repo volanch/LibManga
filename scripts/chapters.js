@@ -96,7 +96,7 @@ $(document).ready(function () {
         return $(this).text().trim();
     }).get();
 
-    $("#searchBar").on("input", function () {
+    $("#searchBar").on("keyup", function () {
         const query = $(this).val().toLowerCase();
         const suggestionsBox = $("#suggestions");
         suggestionsBox.empty();
