@@ -90,42 +90,56 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Error");
     }
 });
+const THEME_KEY = 'theme';
 function black_theme() {
-    const body    = document.getElementById("body");
-    const header  = document.querySelector(".header");
+    const body = document.getElementById("body");
+    const header = document.querySelector(".header");
     const sidebar = document.querySelector(".sidebar");
-    const button  = document.querySelector(".buttonnigga");
+    const button = document.querySelector(".buttonnigga");
     const comments = document.querySelectorAll(".comment");
     const form = document.getElementById("comment2");
     const button2 = document.getElementById("but");
 
     const isDark = getComputedStyle(body).backgroundColor === "rgb(15, 23, 32)";
+
     if (isDark) {
-        body.style.backgroundColor    = "rgb(255, 255, 255)";
-        header.style.backgroundColor  = "rgb(234, 234, 234)";
-        sidebar.style.setProperty('background-color', 'rgb(234, 234, 234)', 'important');
-        button.style.backgroundColor  = "rgb(255, 255, 255)";
-        form.style.backgroundColor  = "rgb(234, 234, 234)";
-        button2.style.backgroundColor  = "rgb(234, 234, 234)";
-        comments.forEach(el => {
-            el.style.backgroundColor = "rgb(234, 234, 234)";
-            el.style.borderColor     = "rgb(209, 213, 219)";
-        });
-        document.querySelectorAll('.sidebar a').forEach(a => a.style.color = '#0f1720');
+        body.style.backgroundColor = "rgb(255, 255, 255)";
+        header && (header.style.backgroundColor = "rgb(234, 234, 234)");
+        sidebar && sidebar.style.setProperty('background-color', 'rgb(234, 234, 234)', 'important');
+
+        button && (button.style.backgroundColor = "rgb(255, 255, 255)");
+        comments && comments.forEach(el => el.style.setProperty('background-color','rgb(245, 247, 250)','important'));
+        form && (form.style.backgroundColor = "rgb(255, 255, 255)");
+        button2 && (button2.style.backgroundColor = "rgb(234, 234, 234)");
+
+        localStorage.setItem(THEME_KEY, 'light');
     } else {
-        body.style.backgroundColor    = "rgb(15, 23, 32)";
-        header.style.backgroundColor  = "rgb(11, 18, 32)";
-        sidebar.style.setProperty('background-color', 'rgb(11, 18, 32)', 'important');
-        button.style.backgroundColor  = "rgb(0, 0, 0)";
-        form.style.backgroundColor  = "rgb(11, 18, 32)";
-        button2.style.backgroundColor  = "#f97316";
-        comments.forEach(el => {
-            el.style.backgroundColor = "rgb(11, 18, 32)";
-            el.style.borderColor     = "rgb(30, 41, 59)";
-        });
-        document.querySelectorAll('.sidebar a').forEach(a => a.style.color = '#9ca3af');
+        body.style.backgroundColor = "rgb(15, 23, 32)";
+        header && (header.style.backgroundColor = "rgb(11, 18, 32)");
+        sidebar && sidebar.style.setProperty('background-color', 'rgb(11, 18, 32)', 'important');
+
+        button && (button.style.backgroundColor = "rgb(15, 23, 32)");
+        comments && comments.forEach(el => el.style.setProperty('background-color','rgb(25, 35, 50)','important'));
+        form && (form.style.backgroundColor = "rgb(15, 23, 32)");
+        button2 && (button2.style.backgroundColor = "rgb(243,111,50)");
+
+        localStorage.setItem(THEME_KEY, 'dark');
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        const saved = localStorage.getItem(THEME_KEY);
+        if (!saved) return;
+        const body = document.getElementById("body");
+        if (!body) return;
+        const isCurrentlyDark = getComputedStyle(body).backgroundColor === "rgb(15, 23, 32)";
+        if (saved === 'light' && isCurrentlyDark) black_theme();
+        if (saved === 'dark' && !isCurrentlyDark) black_theme();
+    } catch (_) {
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const greeting = document.getElementById("greeting");
     const hour = new Date().getHours();
