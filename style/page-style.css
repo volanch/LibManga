@@ -316,6 +316,7 @@ body {
     box-shadow: 0 6px 12px rgba(23, 38, 83, 0.5);
 }
 
+
 @media (min-width: 768px) {
     .card {
         flex: 1 1 calc(50% - 1rem);
@@ -565,7 +566,7 @@ body {
 }
 
 .stats h3 {
-    font-size: 1.5rem;
+    font-size: 1.7rem !important;
     margin: 10px 0;
     color: white;
 }
@@ -659,6 +660,95 @@ body {
 
 .lazy-image.loaded {
     opacity: 1;
+}
+
+.grid-sidebar h3 {
+    text-align: center;
+    color: #f97316;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+
+    padding-bottom: 0.5rem;
+}
+
+.grid-sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.grid-sidebar .nav-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.grid-sidebar .nav-item a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #e6eef8;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.grid-sidebar .nav-item:hover {
+    background: rgba(249, 115, 22, 0.15);
+    transform: translateX(5px);
+}
+
+.grid-sidebar .nav-item a:hover {
+    color: #f97316;
+}
+
+.grid-sidebar .nav-item:focus-within {
+    outline: 2px solid #f97316;
+}
+
+.grid-sidebar h3 {
+    text-align: center;
+    color: #f97316;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.grid-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.grid-sidebar .nav-item {
+    margin: 6px 0;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.grid-sidebar .nav-item a {
+    display: block;
+    padding: 8px 12px;
+    color: #e6eef8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+.grid-sidebar .nav-item:hover {
+    background: rgba(249, 115, 22, 0.2);
+}
+
+.grid-sidebar .nav-item a:hover {
+    color: #f97316;
+}
+
+#greeting {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    color: #f97316;
+    font-weight: 600;
 }
 
 @keyframes fadeIn {
@@ -781,10 +871,8 @@ body {
     background: linear-gradient(to right, #d7d2cc, #4e6d87);
 }
 
-.light .stats h3{
-    font-size: 1.5rem;
-    margin: 10px 0;
-    color: #0f1717;
+.light .stats h3 {
+    color: #000;
 }
 
 .light .suggestions-list {
@@ -793,4 +881,59 @@ body {
 
 .light .button-style{
     color: #0f1717;
+}
+
+.light .button-style {
+    background-color: #fd7212;
+}
+
+.light .grid-sidebar .nav-item a {
+    color: #0f1717;
+}
+
+.light .grid-sidebar .nav-item:hover {
+    background: rgba(251, 108, 8, 0.51);
+}
+
+.light .grid-sidebar .nav-item {
+    background: rgba(28, 28, 28, 0.11);
+}
+
+.light .grid-sidebar h3,
+.light .grid-sidebar h4 {
+    color: black !important;
+}
+
+@media (min-width: 768px) {
+    .chapters-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .chapter-item img {
+        height: 280px;
+        object-fit: cover;
+    }
+
+    .chapter-item .caption {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .chapters-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 2rem 4rem;
+    }
+
+    .chapter-item img {
+        height: 260px;
+    }
+
+    .chapter-item .caption {
+        font-size: 1rem;
+    }
 }
