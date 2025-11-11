@@ -249,37 +249,34 @@ body {
 }
 
 @media (max-width: 900px) {
-    .top-list {
-        padding: 0;
+    body .divider {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 600px) {
-    .nav {
+    body .nav {
         flex-direction: column;
         gap: 8px;
     }
 
-    .page-title {
-        font-size: 1.6rem;
-        margin: 25px 0 15px;
+    body .card {
+        width: 130px;
     }
 
-    .top-item {
+    body .card img {
+        height: 200px;
+    }
+
+    body .gallery-item {
         flex-direction: column;
-        align-items: center;
         text-align: center;
+        padding: 10px;
     }
 
-    .rank {
-        margin-right: 0;
-        margin-bottom: 8px;
-    }
-
-    .top-item img {
-        margin-right: 0;
-        margin-bottom: 10px;
-        width: 90px;
-        height: 90px;
+    body .gallery-item img {
+        margin: 10px auto;
+        width: 110px;
+        height: 140px;
     }
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibManga</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/carousel.css">
@@ -16,6 +17,9 @@
         <button id="dark-theme" class="theme-btn">🌙</button>
         <button id="lang" class="theme-btn">RU</button>
         <audio id="myAudio" src="assets/sounds/pew_pew-dknight556-1379997159.mp3"></audio>
+        <div class = "acc">
+            <img  id="account" class="account-avatar" alt="not logged">
+        </div>
     </nav>
 </header>
 
@@ -45,12 +49,6 @@
 
     <div class="count">users entering here every day</div>
 </main>
-
-<form id="loginForm">
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-</form>
 
 <div id="result"></div>
 

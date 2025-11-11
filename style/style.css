@@ -82,6 +82,19 @@ body {
     cursor: pointer;
     transition: transform 0.2s;
 }
+.acc{
+    padding-left: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    aspect-ratio: 1;
+}
+
+.account-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
 .theme-btn:hover {
     transform: scale(1.2);
