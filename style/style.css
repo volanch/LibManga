@@ -50,6 +50,13 @@ body {
     width: 92px;
     height: 34px;
 }
+.nav-logo {
+    margin-right: auto;
+}
+
+.nav-link, .theme-btn {
+    margin-left: 15px;
+}
 
 .nav-actions {
     display: flex;
@@ -263,3 +270,4 @@ body {
         height: 140px;
     }
 }
+

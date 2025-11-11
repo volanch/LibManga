@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
 
     const currentTheme = localStorage.getItem("theme") || "dark";
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+        const login = localStorage.getItem("login");
+        con
+    }
+
     if (currentTheme === "light") {
         document.documentElement.classList.add("light");
         themeToggle.textContent = "☀️";

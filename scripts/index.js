@@ -4,6 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const galleryGrid = document.getElementById("gallery-grid");
     const trendGrid = document.getElementById("trend-grid");
 
+    const form = document.getElementById("loginForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        try {
+            const res = await fetch("https://first-api-tan.vercel.app/api/auth.js", {
+                method: "POST",
+                headers: {"Content-Type": "application/json",},
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await res.json();
+            if (data.success) {
+                result.innerHTML = `<p>✅ Вход выполнен! ${data.name}</p>`;
+
+
+                } else result.innerHTML = `<p>❌ Неверный логин или пароль</p>`;
+        } catch (error) {
+            console.error("Ошибка при запросе:", error);
+            result.innerHTML = `<p>⚠️ Ошибка подключения к серверу</p>`;
+        }
+    });
+
     const savedTheme = localStorage.getItem("theme") || "dark";
     if (savedTheme === "light") {
         document.documentElement.classList.add("light");
