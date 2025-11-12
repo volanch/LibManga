@@ -48,6 +48,9 @@ The project is hosted on **GitHub Pages**:
 ---
 
 ## 5. Enhanced JavaScript Functionality
+### Authorization
+- Keeps information about user in local storage
+- Also shows its data in Profile popup
 
 ### Form Validation
 - Subscription popup validates email inputs before submission.

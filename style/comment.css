@@ -386,4 +386,71 @@ img.lazy-loaded{filter:blur(0)}
 }
 .stat--mini .num{ font-size:22px; font-weight:700; }
 .stat--mini .label{ color:#9ca3af; font-size:12px; }
+/* ===== HEADER MOBILE FIX (без изменения дизайна) ===== */
+
+/* базовые страховки, чтобы элементы могли сжиматься/переноситься */
+.header { min-width: 0; gap: 12px; }
+.logo { flex: 0 0 auto; }
+.nav-links { flex: 0 1 auto; min-width: 0; }
+.nav-links a { white-space: nowrap; }  /* ссылки не ломаем по словам */
+
+/* ——— планшеты и уже ——— */
+@media (max-width: 920px) {
+    .header {
+        padding: 0 16px;          /* было 0 90px — уменьшаем, чтобы освободить место */
+    }
+    .logo img {
+        width: 80px;              /* чуть меньше логотип, чтобы не давил на заголовок */
+    }
+    .page-title {
+        position: static;         /* ВАЖНО: убираем absolute, иначе всё едет */
+        left: auto; right: auto;
+        margin: 0 auto;           /* по центру */
+        text-align: center;
+        white-space: nowrap;      /* не рвём заголовок по словам */
+        overflow: hidden;         /* если не влез — обрежем троеточием */
+        text-overflow: ellipsis;
+        max-width: 60vw;          /* ограничим ширину, чтобы у навигации осталось место */
+        font-weight: normal;      /* как у тебя */
+        font-size: 18px;          /* как у тебя */
+        color: #9ca3af;           /* как у тебя */
+    }
+    .nav-links {
+        gap: 12px;                /* было 20px — на мобильном плотнее */
+        justify-content: flex-end;
+        flex-wrap: wrap;          /* разрешаем перенос на следующую строку */
+    }
+}
+
+/* ——— телефоны ——— */
+@media (max-width: 560px) {
+    .header {
+        padding: 0 12px;
+        flex-wrap: wrap;          /* разрешаем двум строкам: 1-я — логотип + заголовок, 2-я — ссылки */
+    }
+    .logo img { width: 68px; }  /* ещё немного уменьшили, чтобы всё влезало */
+    .page-title {
+        max-width: 100%;
+        width: 100%;
+        order: 2;                 /* заголовок между логотипом и ссылками выглядит так же, но безопаснее */
+        margin: 0;
+        padding: 6px 0;           /* небольшой вертикальный зазор */
+    }
+    .nav-links {
+        order: 3;                 /* уходит вторым рядом, ниже заголовка */
+        width: 100%;
+        justify-content: center;  /* по центру */
+        gap: 12px;
+    }
+    /* кнопка темы у тебя position: fixed — она не участвует в потоке.
+       Чтобы не перекрывала ссылки на очень узких экранах, чуть подвинем. */
+    .buttonnigga {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        z-index: 5;              /* поверх хедера, но не мешает кликам по ссылкам */
+    }
+}
+
 

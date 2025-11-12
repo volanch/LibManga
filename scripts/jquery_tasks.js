@@ -1,8 +1,6 @@
-// === jQuery Tasks: Comments, Copy Buttons, Toasts, Scroll, Theme Sync ===
+
 $(function () {
     const $win = $(window);
-
-    /* ===== Toast ===== */
     function toast(msg, type = "ok", ttl = 2200) {
         const $box = $('<div class="toast"></div>').addClass(type).text(msg);
         let $ctr = $("#toastContainer");
@@ -12,8 +10,6 @@ $(function () {
         $ctr.append($box);
         setTimeout(() => $box.fadeOut(200, () => $box.remove()), ttl);
     }
-
-    /* ===== Scroll progress ===== */
     const $bar = $("#scrollProgress .scroll-bar");
     function updateProgress() {
         if (!$bar.length) return;
@@ -170,4 +166,33 @@ $(function () {
         localStorage.setItem("THEME_KEY", darkNow ? "dark" : "light");
         $(document).trigger("themeChanged");
     };
+    $(function () {
+        const $btn = $('.menu-toggle');
+        const $sidebar = $('.sidebar');
+        const $overlay = $('.drawer-overlay');
+
+        if (!$btn.length || !$sidebar.length || !$overlay.length) return;
+
+        function open() {
+            $sidebar.addClass('open');
+            $overlay.prop('hidden', false);
+            $('body').addClass('no-scroll');
+            $btn.attr('aria-expanded', 'true');
+        }
+        function close() {
+            $sidebar.removeClass('open');
+            $overlay.prop('hidden', true);
+            $('body').removeClass('no-scroll');
+            $btn.attr('aria-expanded', 'false');
+        }
+
+        $btn.on('click', () => $sidebar.hasClass('open') ? close() : open());
+        $overlay.on('click', close);
+        let startX = null;
+        $sidebar.on('touchstart', e => startX = e.originalEvent.touches[0].clientX);
+        $sidebar.on('touchmove', e => {
+            const x = e.originalEvent.touches[0].clientX;
+            if (startX !== null && (startX - x) < -40) close();
+        });
+    });
 });

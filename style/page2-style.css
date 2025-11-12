@@ -1,116 +1,112 @@
-body {
-    background-color: #0f1720;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
+:root{
+    --hdr-h:56px;
+    --safe-top:env(safe-area-inset-top,0px);
+    --safe-btm:env(safe-area-inset-bottom,0px);
+    --ink:#e5e7eb; --muted:#9ca3af;
+    --bg:#0f1720; --panel:#0b1220; --line:#1e293b; --brand:#f97316;
 }
 
-.layout {
-    display: grid;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:Arial, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+body.no-scroll{overflow:hidden}
+
+.layout{
+    min-height:100vh;
+    display:grid;
     grid-template-areas:
     "header header"
     "sidebar main"
     "footer footer";
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 60px auto 60px;
-    min-height: 100vh;
+    grid-template-columns:220px 1fr;
+    grid-template-rows:auto 1fr auto;
 }
 
-.header {
-    grid-area: header;
-    background-color: #0b1220;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 90px;
-    position: relative;
+/* ===== Header ===== */
+.header{
+    grid-area:header; background:var(--panel);
+    display:flex; align-items:center; gap:12px;
+    padding:0 16px; min-height:calc(var(--hdr-h) + var(--safe-top));
+    padding-top:var(--safe-top);
 }
+.logo img{width:100px; height:auto}
+.page-title{
+    margin:0 auto; text-align:center; color:var(--muted);
+    font-size:18px; font-weight:600;
+}
+.nav-links{display:flex; align-items:center; gap:16px}
+.nav-links a{color:var(--muted); text-decoration:none; font-weight:700}
+.nav-links a:hover{color:var(--brand)}
 
-.logo img {
-    width: 100px;
-    height: auto;
-    margin-left: 15px;
-}
-
-.page-title {
-    position: absolute;
-    left: 300px;
-    right: 300px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: normal;
-    color: #9ca3af;
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: #9ca3af;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.nav-links a:hover {
-    color: #f97316;
-}
+/* Кнопка-тумблер темы — оставляем твой класс */
 .buttonnigga{
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border-radius: 100%;
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    border: 1px solid;
-}
-.sidebar {
-    grid-area: sidebar;
-    background-color: #111827;
-    padding: 20px;
+    width:40px; height:40px; background:#000; border-radius:9999px;
+    border:1px solid #334155; cursor:pointer;
 }
 
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+/* Бургер и оверлей */
+.menu-toggle{
+    display:none;
+    font-size:22px; line-height:1; background:transparent; color:var(--muted);
+    border:1px solid #334155; border-radius:8px; padding:8px 10px; cursor:pointer;
+}
+.drawer-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:999;
 }
 
-.sidebar li {
-    margin-bottom: 15px;
+/* ===== Sidebar ===== */
+.sidebar{
+    grid-area:sidebar; background:var(--panel); padding:20px;
+    transition:transform .25s ease;
+}
+.sidebar h4{margin:0 0 10px; color:#cbd5e1}
+.sidebar ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+.sidebar a{color:var(--muted); text-decoration:none}
+.sidebar a:hover{color:var(--brand)}
+
+/* ===== Main ===== */
+.main{grid-area:main; padding:16px}
+.down{display:flex; justify-content:center}
+#manga{display:block; max-width:92%; height:auto; border-radius:8px}
+
+/* ===== Footer ===== */
+.footer{
+    grid-area:footer; background:var(--panel);
+    display:flex; align-items:center; justify-content:center;
+    padding:12px 16px; padding-bottom:var(--safe-btm);
 }
 
-.sidebar a {
-    color: #9ca3af;
-    text-decoration: none;
+/* ===== Адаптив ===== */
+@media (max-width:1024px){
+    .layout{
+        grid-template-areas:
+      "header"
+      "main"
+      "footer";
+        grid-template-columns:1fr;
+    }
 }
 
-.sidebar a:hover {
-    color: #f97316;
-}
+@media (max-width:768px){
+    .menu-toggle{display:inline-block}
+    .nav-links{display:none} /* Навигация уедет в бургер */
+    .logo img{width:72px}
 
-.main {
-    grid-area: main;
-    padding: 0;
-}
+    /* Сайдбар как выезжающее меню */
+    .sidebar{
+        position:fixed; z-index:1000;
+        top:0; left:0; height:100dvh; width:min(84vw,320px);
+        padding:20px; padding-top:calc(var(--safe-top) + 10px);
+        transform:translateX(-100%);
+        overflow-y:auto; -webkit-overflow-scrolling:touch;
+        box-shadow:6px 0 24px rgba(0,0,0,.35);
+    }
+    .sidebar.open{transform:translateX(0)}
+    .drawer-overlay[hidden]{display:none}
 
-.footer {
-    grid-area: footer;
-    background-color: #0b1220;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .main{padding:12px}
+    #manga{max-width:100%}
 }
-#manga {
-    display: block;
-    margin: 0 auto;
-    max-width: 90%;
-    height: auto;
-}
-#scrollProgress{position:fixed;left:0;top:0;width:100%;height:4px;background:rgba(255,255,255,.08);z-index:2000}
-#scrollProgress .scroll-bar{height:100%;width:0;background:linear-gradient(90deg,#f97316,#fb923c)}
-img.lazy-blur{filter:blur(6px);transition:filter .3s ease}
-img.lazy-loaded{filter:blur(0)}
-
