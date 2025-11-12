@@ -59,7 +59,7 @@ The project is hosted on **GitHub Pages**:
 - Real-time search bar filters chapters dynamically.
 - Displays top 4 live suggestions.
 - Clicking a suggestion automatically filters the displayed results.
-
+  ![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121018.png)
 ### Interactivity
 - All buttons, popups, and form controls are fully functional and animated.
 
@@ -68,11 +68,20 @@ The project is hosted on **GitHub Pages**:
 ## 6. Creative Animation
 
 - **Hover effects** on cards: smooth scaling and shadow transitions.
+  ![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121547.png)
+  ![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121616.png)
 - **Tooltip animation** for copy button.
 - **Button hover transitions** for better user feedback.
 - **Scroll progress bar** to indicate reading progress.
 - **Fade-in and slide animation for headings**, enhancing page entrance dynamics.
 
+---
+
+## 7 External API
+- **Avatars are loading from waifu.im API**
+
+![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121823.png)
+![alt text](assets/readme/Снимок%20экрана%202025-11-12%20122025.png)
 ---
 
 ## Technologies Used

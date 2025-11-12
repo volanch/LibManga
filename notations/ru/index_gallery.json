@@ -1,20 +1,24 @@
 [
   {
+    "link": "beginning/main.html",
     "img": "assets/Card%202.png",
     "chapter": "101 глава",
     "title": "Рыцарь ледяного цветка"
   },
   {
+    "link": "beginning/main.html",
     "img": "assets/kaban.jpg",
     "chapter": "37 глава",
     "title": "Студия Кабана"
   },
   {
+    "link": "beginning/main.html",
     "img": "assets/cover.jpg",
     "chapter": "143 глава",
     "title": "Начало после конца"
   },
   {
+    "link": "beginning/main.html",
     "img": "assets/kaban.jpg",
     "chapter": "36 глава",
     "title": "Студия Кабана"
