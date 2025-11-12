@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = subscribeForm.querySelector('input[type="password"]')?.value || '';
             localStorage.setItem('user_email', email);
             localStorage.setItem('user_password', password);
-            close(); // закрываем попап после сохранения
+            close();
         });
     }
     const openBtn2 = document.getElementById("openPopupBtn2");
@@ -113,6 +113,7 @@ function black_theme() {
     const comments = document.querySelectorAll(".comment");
     const form = document.getElementById("comment2");
     const button2 = document.getElementById("but");
+    const footer = document.querySelector("footer");
 
     const isDark = getComputedStyle(body).backgroundColor === "rgb(15, 23, 32)";
 
@@ -124,6 +125,8 @@ function black_theme() {
         comments && comments.forEach(el => el.style.setProperty('background-color', 'rgb(245, 247, 250)', 'important'));
         form && (form.style.backgroundColor = "rgb(255, 255, 255)");
         button2 && (button2.style.backgroundColor = "rgb(234, 234, 234)");
+        footer.style.backgroundColor = "rgb(255, 255, 255)";
+        footer.style.color = "rgb(74,73,73)";
         localStorage.setItem(THEME_KEY, 'light');
     } else {
         body.style.backgroundColor = "rgb(15, 23, 32)";
@@ -133,6 +136,8 @@ function black_theme() {
         comments && comments.forEach(el => el.style.setProperty('background-color', 'rgb(25, 35, 50)', 'important'));
         form && (form.style.backgroundColor = "rgb(15, 23, 32)");
         button2 && (button2.style.backgroundColor = "rgb(243,111,50)");
+        footer.style.backgroundColor = "rgb(15, 23, 32)";
+        footer.style.color = "rgb(255,253,253)";
         localStorage.setItem(THEME_KEY, 'dark');
     }
 }
