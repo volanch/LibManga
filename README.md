@@ -10,8 +10,8 @@ Created by **Kovernikov Vladislav, Sekezhanov Diyar, Tamerlan Ibragimov** for th
 ## 1. Responsiveness
 
 - Implemented responsive design using media queries for:
-    - **Tablets:**
-    - **Desktops:**
+    - **Tablets**
+    - **Desktops**
     - **Mobiles**
 - `.chapters-gallery` and `.card-row` grids dynamically adjust layout for various device widths.
 
