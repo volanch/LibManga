@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../style/page-style.css">
+    <link rel="stylesheet" href="../public/style/page-style.css">
     <title>Beginning After The End — Title Page</title>
 </head>
 <body>
 <div id="scrollProgress"></div>
 <div class="grid-layout">
     <header class="grid-header">
-        <a href ="../index.html">
-        <img src="../assets/logo.png" alt="Logo">
+        <a href ="index.html">
+        <img src="../public/assets/logo.png" alt="Logo">
         </a>
-        <h1 class="fade-slide">The Beginning After The End</h1>
+        <h1>The Beginning After The End</h1>
         <nav class="nav">
             <a href="chapters.html">Chapters</a>
             <button id="light-theme" class="theme-btn">🌙</button>
@@ -22,12 +22,14 @@
 
     <aside class="grid-sidebar">
         <h4 id="greeting"></h4>
+        <h3>Search for words:</h3>
+        <input type="text" id="search-bar-main" placeholder="Search FAQ...">
         <h3>Quick Links</h3>
         <nav>
             <ul>
-                <li class="nav-item" tabindex="0"><a href="../index.html">Home</a></li>
-                <li class="nav-item" tabindex="0"><a href="page.html">Start Reading</a></li>
+                <li class="nav-item" tabindex="0"><a href="index.html">Home</a></li>
                 <li class="nav-item" tabindex="0"><a href="comments.html">Comments</a></li>
+                <li class="nav-item" tabindex="0"><a href="page.html">Start Reading</a></li>
             </ul>
         </nav>
         <section class="stats">
@@ -53,24 +55,24 @@
                     </div>
                 </section>
 
-                <img src="../assets/cover.jpg" alt="Cover" class="cover-side">
+                <img src="../public/assets/cover.jpg" alt="Cover" class="cover-side">
             </div>
 
         <section class="card-row">
             <div class="card">
-                <img src="../assets/Card 1.png" alt="Card 1">
+                <img src="../public/assets/Card 1.png" alt="Card 1">
                 <h3>Chapter 1</h3>
                 <p>The Light at the End of the Tunnel.</p>
                 <a href="page.html" class="button-style">Read</a>
             </div>
             <div class="card">
-                <img src="../assets/Card 2.png" alt="Card 2">
+                <img src="../public/assets/Card 2.png" alt="Card 2">
                 <h3>Chapter 2</h3>
                 <p>The Encyclopedia of Mana Manipulation.</p>
                 <a href="page.html" class="button-style">Read</a>
             </div>
             <div class="card">
-                <img src="../assets/Card 3.png" alt="Card 3">
+                <img src="../public/assets/Card 3.png" alt="Card 3">
                 <h3>Chapter 3</h3>
                 <p>Head Start.</p>
                 <a href="page.html" class="button-style">Read</a>
@@ -105,10 +107,10 @@
     </main>
 
     <footer class="grid-footer">
-        <p>© 2025 AituLIB (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
+        <p>© 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
     </footer>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/light-theme.js"></script>
+    <script src="../public/scripts/main.js"></script>
+    <script src="../public/scripts/light-theme.js"></script>
 </div>
 </body>
 </html>

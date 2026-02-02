@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>AituLIB - Comments</title>
-  <link rel="stylesheet" href="../style/comment.css">
-    <script src = "../scripts/black_theme.js" defer></script>
+  <link rel="stylesheet" href="../public/style/comment.css">
+    <script src = "../public/scripts/black_theme.js" defer></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="../scripts/jquery_tasks.js" defer></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- новый файл с заданиями -->
+<script src="../public/scripts/jquery_tasks.js" defer></script>
+<home/>
 <body id="body" style="background-color:rgb(15, 23, 32);">
 <div class="layout">
     <header class="header">
     <div class="logo">
-      <img src="../assets/logo.png" alt="AituLIB logo">
+      <img src="../public/assets/logo.png" alt="AituLIB logo">
     </div>
     <h2 class="page-title">Comments</h2>
 
+        <!-- Part 2: Scroll progress -->
         <div id="scrollProgress"><div class="scroll-bar"></div></div>
 
         <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
@@ -41,16 +43,10 @@
             </li>
 
             <li class="icon-item">
-                <img src="../assets/autoresetion.png"
+                <img src="../public/assets/autoresetion.png"
                      alt="Sign in"
                      class="auth-icon"
                      id="openPopupBtn">
-            </li>
-            <li class="icon-item2">
-                <img src="../assets/account_icon.png"
-                     alt="Account"
-                     class="auth-icon"
-                     id="openPopupBtn2">
             </li>
         </ul>
     </aside>
@@ -58,30 +54,17 @@
         <div id="popupOverlay" class="popup-overlay" aria-hidden="true">
             <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
                 <span id="closePopupBtn" class="close-btn" aria-label="Close">&times;</span>
-                <h2 id="popupTitle">Authentication</h2>
+                <h2 id="popupTitle">Autorozation</h2>
                 <p>To continue please sign up</p>
                 <form id="subscribeForm">
-                    <label for="password">password:</label>
-                    <input type="password" id="name" name="name" required>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
 
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
 
                     <button type="submit" class="submit-btn">Sign up</button>
                     <button id="reset-popup" type="reset" class="submit-btn">Reset</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <section class="popup-section">
-        <div id="popupOverlay2" class="popup-overlay" aria-hidden="true">
-            <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-                <span id="closePopupBtn2" class="close-btn" aria-label="Close">&times;</span>
-                <h2 id="popupTitle">Profile</h2>
-                <p>Your data</p>
-                <form id="subscribeForm2">
-                    <label for="password">Password:</label>
-                    <label for="email">Email:</label>
                 </form>
             </div>
         </div>
@@ -95,7 +78,7 @@
     <div class="comments">
       <div class="comment">
         <div class="comment__avatar">
-          <img src="../assets/user.png" alt="user">
+          <img src="../public/assets/user.png" alt="user">
         </div>
         <div class="comment__content">
           <span class="comment__author">Иван</span>
@@ -106,7 +89,7 @@
 
       <div class="comment">
         <div class="comment__avatar">
-          <img src="../assets/user.png" alt="user">
+          <img src="../public/assets/user.png" alt="user">
         </div>
         <div class="comment__content">
           <span class="comment__author">Мария</span>
@@ -117,7 +100,7 @@
 
       <div class="comment">
         <div class="comment__avatar">
-          <img src="../assets/user.png" alt="user">
+          <img src="../public/assets/user.png" alt="user">
         </div>
         <div class="comment__content">
           <span class="comment__author">Алексей</span>
@@ -129,7 +112,7 @@
   </main>
 
   <footer class="footer">
-    <p>© 2025 AituLIB (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
+    <p>© 2025 AituLIB. All rights reserved.</p>
   </footer>
 </div>
 </body>
