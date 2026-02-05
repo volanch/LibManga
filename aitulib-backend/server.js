@@ -3,22 +3,29 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const cors = require('cors');
+
+const connectToDB = require("./config/dbConfig");
+const errorHandler = require("./middlewares/errorHandler");
+const mangaRouter = require("./routes/mangaRoutes");
+
 const app = express();
+
 app.use(cors());
-
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.error("MongoDB error:", err));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
-
-
-const mangaRouter = require("./routes/manga.routes");
 app.use("/", mangaRouter);
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+// global error handler
+app.use(errorHandler);
+
+connectToDB();
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+})
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
 });
