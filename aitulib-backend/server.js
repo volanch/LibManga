@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-const mangaRouter = require("./router/mangaRouter");
+const mangaRouter = require("./routes/manga.routes");
 app.use("/", mangaRouter);
 
 app.listen(3000, () => {
