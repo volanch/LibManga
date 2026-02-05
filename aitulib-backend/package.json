@@ -1,0 +1,22 @@
+{
+  "name": "libmanga",
+  "version": "1.0.0",
+  "description": "A responsive, theme-adaptive manga library website built with HTML, CSS, and JavaScript.  \r Created by **Kovernikov Vladislav, Sekezhanov Diyar, Tamerlan Ibragimov** for the final project showcase.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volanch/LibManga.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/volanch/LibManga/issues"
+  },
+  "homepage": "https://github.com/volanch/LibManga#readme"
+}
