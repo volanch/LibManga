@@ -7,6 +7,9 @@ const cors = require('cors');
 const connectToDB = require("./config/dbConfig");
 const errorHandler = require("./middlewares/errorHandler");
 const mangaRouter = require("./routes/mangaRoutes");
+const userRouter = require("./routes/userRoutes");
+const chapterRouter = require("./routes/chapterRoutes");
+const commentRouter = require("./routes/commentRoutes");
 
 const app = express();
 
@@ -14,8 +17,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", mangaRouter);
+app.use("/api/users", userRouter);
+app.use("/api/chapters", chapterRouter);
+app.use("/api/comments", commentRouter);
 
-// global error handler
 app.use(errorHandler);
 
 connectToDB();
