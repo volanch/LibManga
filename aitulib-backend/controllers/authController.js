@@ -2,12 +2,13 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const User = require('../models/userModel')
 const authConfig = require('../config/authConfig')
+const emailService = require('../services/emailService')
 
 const buildToken = (user) => {
   return jwt.sign(
-    { id: user._id.toString(), role: user.role },
-    authConfig.secret,
-    { expiresIn: '24h' },
+      { id: user._id.toString(), role: user.role },
+      authConfig.secret,
+      { expiresIn: '24h' },
   )
 }
 
@@ -17,18 +18,28 @@ exports.signup = async (req, res) => {
 
     if (!username || !email || !password) {
       return res
-        .status(400)
-        .json({ message: 'username, email, and password are required' })
+          .status(400)
+          .json({ message: 'username, email, and password are required' })
     }
 
     const hashedPassword = await bcrypt.hash(password, 10)
+    const allowRole = String(process.env.ALLOW_ROLE_ON_SIGNUP || '').toLowerCase() === 'true'
+    const allowedRoles = ['user', 'premium user', 'moderator', 'admin']
+    const safeRole = allowRole && role && allowedRoles.includes(role) ? role : 'user'
 
     const user = await User.create({
       username,
       email,
       password: hashedPassword,
-      role: role || 'user',
+      role: safeRole,
     })
+
+    try {
+      await emailService.sendWelcomeEmail({ to: user.email, username: user.username })
+    } catch (e) {
+      // Don't fail signup because of email issues
+      console.warn('Welcome email failed:', e.message)
+    }
 
     const token = buildToken(user)
 
@@ -50,8 +61,8 @@ exports.signin = async (req, res) => {
 
     if (!password || (!username && !email)) {
       return res
-        .status(400)
-        .json({ message: 'password and username or email are required' })
+          .status(400)
+          .json({ message: 'password and username or email are required' })
     }
 
     const query = email ? { email } : { username }

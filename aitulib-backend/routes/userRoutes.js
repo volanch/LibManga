@@ -1,12 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controllers/userController');
+const express = require('express')
+const router = express.Router()
+const userController = require('../controllers/userController')
+const { verifyToken, allowSelfOrRoles, allowRoles } = require('../middlewares/authJwt')
 
-router.get('/', userController.getAllUsers);
-router.get('/:id', userController.getUserById);
-router.post('/', userController.createUser);
-router.put('/:id/change-password', userController.changePassword);
-router.patch('/:id/role', userController.updateRole);
-router.delete('/:id', userController.deleteUser);
+router.get('/', verifyToken, allowRoles('admin'), userController.getAllUsers)
+router.post('/', verifyToken, allowRoles('admin'), userController.createUser)
+router.patch('/:id/role', verifyToken, allowRoles('admin'), userController.updateRole)
+router.delete('/:id', verifyToken, allowRoles('admin'), userController.deleteUser)
 
-module.exports = router;
+router.get('/:id', verifyToken, allowSelfOrRoles('id', 'moderator'), userController.getUserById)
+
+router.put('/:id/change-password', verifyToken, allowSelfOrRoles('id', 'admin'), userController.changePassword)
+
+module.exports = router
