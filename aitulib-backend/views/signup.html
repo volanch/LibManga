@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LibManga — Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/auth.css" />
+  </head>
+  <body class="auth-page" data-page="signup">
+    <div class="auth-shell">
+      <header class="auth-header">
+        <a class="brand" href="/">
+          <span class="brand-mark">LM</span>
+          <span class="brand-name">LibManga</span>
+        </a>
+        <nav class="auth-nav">
+          <a href="/signin" class="link">Sign in</a>
+        </nav>
+      </header>
+
+      <main class="auth-card">
+        <div class="auth-card__intro">
+          <h1>Join the library.</h1>
+          <p>
+            Create a free account to unlock comments, shelves, and personal
+            lists.
+          </p>
+        </div>
+
+        <form id="authForm" class="auth-form" novalidate>
+          <label class="field">
+            <span>Username</span>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              autocomplete="username"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="new-password"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Confirm password</span>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              autocomplete="new-password"
+              required
+            />
+          </label>
+
+          <button type="submit" class="primary-btn">Create Account</button>
+          <div
+            id="formMessage"
+            class="form-message"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+
+        <div class="auth-card__footer">
+          <span>Already have an account?</span>
+          <a class="link" href="/signin">Sign in</a>
+        </div>
+      </main>
+
+      <section class="auth-highlight">
+        <h2>Build your list.</h2>
+        <p>
+          Track what you are reading, get notified about new releases, and keep
+          favorites close.
+        </p>
+      </section>
+    </div>
+
+    <script src="/scripts/auth.js"></script>
+  </body>
+</html>

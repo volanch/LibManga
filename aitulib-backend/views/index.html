@@ -1,62 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AituLIB</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/carousel.css">
-</head>
-<body id = "maid">
-<header class="header" id="header">
-    <nav class="nav">
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/carousel.css" />
+  </head>
+  <body id="maid">
+    <header class="header" id="header">
+      <nav class="nav">
         <a class="nav-logo" href="index.html">
-            <img src="assets/logo.png" alt="logo">
+          <img src="assets/logo.png" alt="logo" />
         </a>
         <a href="top.html" class="nav-link">Categories</a>
+        <a href="/signin" class="nav-link">Sign in</a>
+        <a href="/signup" class="nav-link">Sign up</a>
         <button id="dark-theme" class="theme-btn">🌙</button>
         <button id="lang" class="theme-btn">RU</button>
-        <audio id="myAudio" src="assets/sounds/pew_pew-dknight556-1379997159.mp3"></audio>
-        <div class = "acc">
-            <img  id="account" class="account-avatar" alt="not logged">
+        <audio
+          id="myAudio"
+          src="assets/sounds/pew_pew-dknight556-1379997159.mp3"
+        ></audio>
+        <div class="acc">
+          <img id="account" class="account-avatar" alt="not logged" />
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<main>
-    <div class="carousel-container">
+    <main>
+      <div class="carousel-container">
         <button class="carousel-btn prev-btn">‹</button>
         <div class="carousel-track" id="top-grid"></div>
         <button class="carousel-btn next-btn">›</button>
-    </div>
+      </div>
 
-    <section class="gallery divider" id="gall">
+      <section class="gallery divider" id="gall">
         <div>
-            <h1 class="section-title highlight">Last Updated</h1>
-            <div class="gallery-grid" id="gallery-grid">
-            </div>
+          <h1 class="section-title highlight">Last Updated</h1>
+          <div class="gallery-grid" id="gallery-grid"></div>
         </div>
         <div>
-            <h1 class="section-title highlight">Trending of <span id="swag">date</span></h1>
-            <div class="gallery-grid" id="trend-grid">
-            </div>
+          <h1 class="section-title highlight">
+            Trending of <span id="swag">date</span>
+          </h1>
+          <div class="gallery-grid" id="trend-grid"></div>
         </div>
-    </section>
+      </section>
 
-    <div id="stats">
+      <div id="stats">
         <div class="count" data-target="40000">0</div>
-    </div>
+      </div>
 
-    <div class="count">users entering here every day</div>
-</main>
+      <div class="count">users entering here every day</div>
+    </main>
 
-<div id="result"></div>
+    <div id="result"></div>
 
-<footer class="footer" id="footer">
-    <p>© 2025 AituLIB (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
-</footer>
-</body>
-<script src = "/scripts/index.js" ></script>
-<script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src = "/scripts/index_jquerry.js" ></script>
+    <footer class="footer" id="footer">
+      <p>
+        © 2025 AituLIB (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov
+        Tamerlan)
+      </p>
+    </footer>
+  </body>
+  <script src="/scripts/index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/scripts/index_jquerry.js"></script>
 </html>

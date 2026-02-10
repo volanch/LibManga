@@ -33,6 +33,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
 
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'signin.html'))
+})
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'signup.html'))
+})
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`)
 })

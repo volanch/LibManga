@@ -1,47 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>LibManga — Top</title>
-    <link rel="stylesheet" href="../public/style/style_top.css">
-</head>
-<body>
-<header class="header">
-    <nav class="nav">
+    <link rel="stylesheet" href="../public/style/style_top.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
         <a href="index.html" class="nav-logo">
-            <img src="../public/assets/logo.png" alt="LibManga logo">
+          <img src="../public/assets/logo.png" alt="LibManga logo" />
         </a>
         <div class="nav-actions">
-            <a href="top.html" class="nav-link">Categories</a>
-            <button id="theme-toggle" class="theme-btn">🌙</button>
+          <a href="top.html" class="nav-link">Categories</a>
+          <a href="/signin" class="nav-link">Sign in</a>
+          <a href="/signup" class="nav-link">Sign up</a>
+          <button id="theme-toggle" class="theme-btn">🌙</button>
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<main class="main-content">
-    <h1 class="page-title">Top of All Time</h1>
+    <main class="main-content">
+      <h1 class="page-title">Top of All Time</h1>
 
-    <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search manga...">
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search manga..." />
         <ul id="suggestions" class="suggestions"></ul>
-    </div>
+      </div>
 
-    <div class="btns">
+      <div class="btns">
         <button class="button">senen</button>
         <button class="button">sedze</button>
         <button class="button">all</button>
-    </div>
-    <section class="top-list" id="top-grid"></section>
-</main>
+      </div>
+      <section class="top-list" id="top-grid"></section>
+    </main>
 
-<footer class="footer">
-    <p>© 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
-</footer>
+    <footer class="footer">
+      <p>
+        © 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov
+        Tamerlan)
+      </p>
+    </footer>
 
-<script src="../public/scripts/top.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../public/scripts/top_jquery.js">
-
-</script>
-</body>
+    <script src="../public/scripts/top.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../public/scripts/top_jquery.js"></script>
+  </body>
 </html>

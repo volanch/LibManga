@@ -1,116 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../public/style/page-style.css">
+    <link rel="stylesheet" href="../public/style/page-style.css" />
     <title>Beginning After The End — Title Page</title>
-</head>
-<body>
-<div id="scrollProgress"></div>
-<div class="grid-layout">
-    <header class="grid-header">
-        <a href ="index.html">
-        <img src="../public/assets/logo.png" alt="Logo">
+  </head>
+  <body>
+    <div id="scrollProgress"></div>
+    <div class="grid-layout">
+      <header class="grid-header">
+        <a href="index.html">
+          <img src="../public/assets/logo.png" alt="Logo" />
         </a>
         <h1>The Beginning After The End</h1>
         <nav class="nav">
-            <a href="chapters.html">Chapters</a>
-            <button id="light-theme" class="theme-btn">🌙</button>
+          <a href="chapters.html">Chapters</a>
+          <a href="/signin">Sign in</a>
+          <a href="/signup">Sign up</a>
+          <button id="light-theme" class="theme-btn">🌙</button>
         </nav>
-    </header>
+      </header>
 
-    <aside class="grid-sidebar">
+      <aside class="grid-sidebar">
         <h4 id="greeting"></h4>
         <h3>Search for words:</h3>
-        <input type="text" id="search-bar-main" placeholder="Search FAQ...">
+        <input type="text" id="search-bar-main" placeholder="Search FAQ..." />
         <h3>Quick Links</h3>
         <nav>
-            <ul>
-                <li class="nav-item" tabindex="0"><a href="index.html">Home</a></li>
-                <li class="nav-item" tabindex="0"><a href="comments.html">Comments</a></li>
-                <li class="nav-item" tabindex="0"><a href="page.html">Start Reading</a></li>
-            </ul>
+          <ul>
+            <li class="nav-item" tabindex="0"><a href="index.html">Home</a></li>
+            <li class="nav-item" tabindex="0">
+              <a href="comments.html">Comments</a>
+            </li>
+            <li class="nav-item" tabindex="0">
+              <a href="page.html">Start Reading</a>
+            </li>
+          </ul>
         </nav>
         <section class="stats">
-            <h3>Readers: <span class="count" data-count="1000">0</span>+</h3>
+          <h3>Readers: <span class="count" data-count="1000">0</span>+</h3>
         </section>
-    </aside>
+      </aside>
 
-    <main class="grid-main">
-            <div class="intro-layout">
-                <section class="intro-section" id="intro">
-                    <h2>About the Manga</h2>
-                    <p id="copyText">
-                        The Beginning After The End follows the life of the late King Grey after his untimely and mysterious death.
-                        Reborn as Arthur Leywin, he seeks to correct his past mistakes in the vibrant new continent of Dicathen,
-                        a world of magic and fantastical creatures.
-                    </p>
-                    <div class="buttons-row">
-                        <a class="button-style" href="page.html">Read Chapter 1</a>
-                        <div class="copy-container">
-                            <button id="copyBtn" class="button-style">Copy</button>
-                            <span class="tooltip" id="copyTooltip">Copied!</span>
-                        </div>
-                    </div>
-                </section>
-
-                <img src="../public/assets/cover.jpg" alt="Cover" class="cover-side">
+      <main class="grid-main">
+        <div class="intro-layout">
+          <section class="intro-section" id="intro">
+            <h2>About the Manga</h2>
+            <p id="copyText">
+              The Beginning After The End follows the life of the late King Grey
+              after his untimely and mysterious death. Reborn as Arthur Leywin,
+              he seeks to correct his past mistakes in the vibrant new continent
+              of Dicathen, a world of magic and fantastical creatures.
+            </p>
+            <div class="buttons-row">
+              <a class="button-style" href="page.html">Read Chapter 1</a>
+              <div class="copy-container">
+                <button id="copyBtn" class="button-style">Copy</button>
+                <span class="tooltip" id="copyTooltip">Copied!</span>
+              </div>
             </div>
+          </section>
+
+          <img
+            src="../public/assets/cover.jpg"
+            alt="Cover"
+            class="cover-side"
+          />
+        </div>
 
         <section class="card-row">
-            <div class="card">
-                <img src="../public/assets/Card%201.png" alt="Card 1">
-                <h3>Chapter 1</h3>
-                <p>The Light at the End of the Tunnel.</p>
-                <a href="page.html" class="button-style">Read</a>
-            </div>
-            <div class="card">
-                <img src="../public/assets/Card%202.png" alt="Card 2">
-                <h3>Chapter 2</h3>
-                <p>The Encyclopedia of Mana Manipulation.</p>
-                <a href="page.html" class="button-style">Read</a>
-            </div>
-            <div class="card">
-                <img src="../public/assets/Card%203.png" alt="Card 3">
-                <h3>Chapter 3</h3>
-                <p>Head Start.</p>
-                <a href="page.html" class="button-style">Read</a>
-            </div>
+          <div class="card">
+            <img src="../public/assets/Card%201.png" alt="Card 1" />
+            <h3>Chapter 1</h3>
+            <p>The Light at the End of the Tunnel.</p>
+            <a href="page.html" class="button-style">Read</a>
+          </div>
+          <div class="card">
+            <img src="../public/assets/Card%202.png" alt="Card 2" />
+            <h3>Chapter 2</h3>
+            <p>The Encyclopedia of Mana Manipulation.</p>
+            <a href="page.html" class="button-style">Read</a>
+          </div>
+          <div class="card">
+            <img src="../public/assets/Card%203.png" alt="Card 3" />
+            <h3>Chapter 3</h3>
+            <p>Head Start.</p>
+            <a href="page.html" class="button-style">Read</a>
+          </div>
         </section>
-
 
         <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+          <h2>Frequently Asked Questions</h2>
 
-            <div class="faq-item">
-                <div class="faq-question">How often are new chapters released?</div>
-                <div class="faq-answer">
-                    <p>New chapters are usually released weekly, depending on the author’s schedule.</p>
-                </div>
+          <div class="faq-item">
+            <div class="faq-question">How often are new chapters released?</div>
+            <div class="faq-answer">
+              <p>
+                New chapters are usually released weekly, depending on the
+                author’s schedule.
+              </p>
             </div>
+          </div>
 
-            <div class="faq-item">
-                <div class="faq-question">Can I read the manga for free?</div>
-                <div class="faq-answer">
-                    <p>Some chapters are free to read, but supporting the author by purchasing volumes is encouraged.</p>
-                </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I read the manga for free?</div>
+            <div class="faq-answer">
+              <p>
+                Some chapters are free to read, but supporting the author by
+                purchasing volumes is encouraged.
+              </p>
             </div>
+          </div>
 
-            <div class="faq-item">
-                <div class="faq-question">Where can I find more information?</div>
-                <div class="faq-answer">
-                    <p>You can visit the official site or join community forums for discussions and updates.</p>
-                </div>
+          <div class="faq-item">
+            <div class="faq-question">Where can I find more information?</div>
+            <div class="faq-answer">
+              <p>
+                You can visit the official site or join community forums for
+                discussions and updates.
+              </p>
             </div>
+          </div>
         </section>
-    </main>
+      </main>
 
-    <footer class="grid-footer">
-        <p>© 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov Tamerlan)</p>
-    </footer>
-    <script src="../public/scripts/main.js"></script>
-    <script src="../public/scripts/light-theme.js"></script>
-</div>
-</body>
+      <footer class="grid-footer">
+        <p>
+          © 2025 LibManga (Kovernikov Vladislav, Sekezhanov Diyar, Ibragimov
+          Tamerlan)
+        </p>
+      </footer>
+      <script src="../public/scripts/main.js"></script>
+      <script src="../public/scripts/light-theme.js"></script>
+    </div>
+  </body>
 </html>

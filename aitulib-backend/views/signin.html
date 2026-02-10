@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LibManga — Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/auth.css" />
+  </head>
+  <body class="auth-page" data-page="signin">
+    <div class="auth-shell">
+      <header class="auth-header">
+        <a class="brand" href="/">
+          <span class="brand-mark">LM</span>
+          <span class="brand-name">LibManga</span>
+        </a>
+        <nav class="auth-nav">
+          <a href="/signup" class="link">Create account</a>
+        </nav>
+      </header>
+
+      <main class="auth-card">
+        <div class="auth-card__intro">
+          <h1>Welcome back.</h1>
+          <p>Sign in to save favorites, post comments, and keep your place.</p>
+        </div>
+
+        <form id="authForm" class="auth-form" novalidate>
+          <label class="field">
+            <span>Username or email</span>
+            <input
+              type="text"
+              id="identity"
+              name="identity"
+              autocomplete="username"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+
+          <button type="submit" class="primary-btn">Sign In</button>
+          <div
+            id="formMessage"
+            class="form-message"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+
+        <div class="auth-card__footer">
+          <span>New here?</span>
+          <a class="link" href="/signup">Create an account</a>
+        </div>
+      </main>
+
+      <section class="auth-highlight">
+        <h2>Your library, synced.</h2>
+        <p>
+          Keep reading progress, bookmark chapters, and build a personal list
+          across devices.
+        </p>
+      </section>
+    </div>
+
+    <script src="/scripts/auth.js"></script>
+  </body>
+</html>
