@@ -12,6 +12,7 @@ const userRouter = require('./routes/userRoutes')
 const chapterRouter = require('./routes/chapterRoutes')
 const commentRouter = require('./routes/commentRoutes')
 const authRouter = require('./routes/authRoutes')
+const mainRouteri = require('./routes/mainRouter')
 
 const app = express()
 
@@ -19,22 +20,19 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// статик (css/js/assets)
 app.use(express.static(path.join(__dirname, 'public')))
 
-// API routes
-app.use('/', mangaRouter)
+app.use('/api/manga', mangaRouter)
 app.use('/api/users', userRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/chapters', chapterRouter)
 app.use('/api/comments', commentRouter)
+app.use('/', mainRouteri)
 
-// Pages from views: /index.html, /users.html, /top.html, etc.
 const VIEWS_DIR = path.join(__dirname, 'views')
 app.get('/:page', (req, res, next) => {
   const page = req.params.page
 
-  // отдаём только *.html из views
   if (!page.endsWith('.html')) return next()
 
   const safeName = path.basename(page) // защита от ../
@@ -47,7 +45,6 @@ app.get('/:page', (req, res, next) => {
   return next()
 })
 
-// красивые роуты (если используешь /signin и /signup)
 app.get('/signin', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'signin.html'))
 })
@@ -58,7 +55,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
 
-// error handler — в самом конце
 app.use(errorHandler)
 
 connectToDB()
