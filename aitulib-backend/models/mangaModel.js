@@ -18,7 +18,7 @@ const mangaSchema = new mongoose.Schema({
         ],
         status: {
             type: String,
-            default: 'Ongoing'
+            default: 'Publishing'
         },
         author: {
             type: String
@@ -28,7 +28,10 @@ const mangaSchema = new mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Comment'
             }
-        ]
+        ],
+        published: {
+            type: Date
+        }
     },
     {
         timestamps: true
