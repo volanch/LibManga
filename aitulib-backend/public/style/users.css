@@ -1,0 +1,144 @@
+#usersPage {
+    background: radial-gradient(900px 500px at 10% 0%, rgba(0, 110, 255, 0.25), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(0, 180, 255, 0.18), transparent 60%),
+    linear-gradient(180deg, #060b1a, #08102a);
+    min-height: 100vh;
+}
+
+.users-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+}
+
+.users-card {
+    border: 1px solid rgba(110, 170, 255, 0.18);
+    border-radius: 18px;
+    background: rgba(8, 16, 42, 0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+}
+
+.users-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 16px 10px;
+    border-bottom: 1px solid rgba(110, 170, 255, 0.12);
+}
+
+.users-title {
+    margin: 0 0 6px;
+    color: rgba(240, 248, 255, 0.92);
+    font-size: 22px;
+}
+
+.users-sub {
+    margin: 0;
+    color: rgba(240, 248, 255, 0.65);
+    font-size: 14px;
+}
+
+.users-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.role-badge {
+    display: inline-flex;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(0, 110, 255, 0.16);
+    border: 1px solid rgba(110, 170, 255, 0.22);
+    color: rgba(240, 248, 255, 0.9);
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.u-btn {
+    border: 1px solid rgba(110, 170, 255, 0.28);
+    background: rgba(0, 110, 255, 0.14);
+    color: rgba(240, 248, 255, 0.92);
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.u-btn:hover {
+    background: rgba(0, 110, 255, 0.22);
+}
+
+.u-btn.danger {
+    background: rgba(239, 68, 68, 0.14);
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
+.u-btn.danger:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.users-msg {
+    padding: 10px 16px 0;
+    min-height: 22px;
+    font-size: 13px;
+    color: rgba(240, 248, 255, 0.75);
+}
+
+.users-msg.error { color: rgba(239, 68, 68, 0.95); }
+.users-msg.ok { color: rgba(34, 197, 94, 0.95); }
+.users-msg.info { color: rgba(56, 189, 248, 0.95); }
+
+.users-table-wrap {
+    overflow: auto;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 820px;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(110, 170, 255, 0.12);
+    color: rgba(240, 248, 255, 0.9);
+    font-size: 14px;
+}
+
+.users-table th {
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-size: 12px;
+    color: rgba(240, 248, 255, 0.7);
+    background: rgba(0, 110, 255, 0.08);
+    text-align: left;
+}
+
+.users-table tr:hover td {
+    background: rgba(0, 110, 255, 0.06);
+}
+
+.right {
+    text-align: right;
+}
+
+.role-pill {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    background: rgba(56, 189, 248, 0.12);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.users-foot {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(240, 248, 255, 0.65);
+}
