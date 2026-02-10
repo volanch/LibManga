@@ -1,6 +1,7 @@
 const User = require('../models/userModel')
 
-const roles = ['user', 'admin', 'premium user']
+// Roles supported by the app
+const roles = ['user', 'premium user', 'moderator', 'admin']
 
 const checkDuplicateUsernameOrEmail = async (req, res, next) => {
   try {
@@ -8,8 +9,8 @@ const checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
     if (!username || !email) {
       return res
-        .status(400)
-        .json({ message: 'username and email are required' })
+          .status(400)
+          .json({ message: 'username and email are required' })
     }
 
     const existingUser = await User.findOne({
@@ -18,8 +19,8 @@ const checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
     if (existingUser) {
       return res
-        .status(409)
-        .json({ message: 'Username or email already in use' })
+          .status(409)
+          .json({ message: 'Username or email already in use' })
     }
 
     next()

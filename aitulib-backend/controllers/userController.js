@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const User = require('../models/userModel')
+const emailService = require('../services/emailService')
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -20,23 +21,24 @@ exports.getUserById = async (req, res) => {
   }
 }
 
-// Создать пользователя
+// Создать пользователя (обычно админская операция; доступ ограничивается в routes)
 exports.createUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body
 
     if (!username || !email || !password) {
       return res
-        .status(400)
-        .json({ message: 'username, email, and password are required' })
+          .status(400)
+          .json({ message: 'username, email, and password are required' })
     }
 
     const hashedPassword = await bcrypt.hash(password, 10)
+
     const user = new User({
       username,
       email,
       password: hashedPassword,
-      role,
+      role: role || 'user',
     })
 
     const newUser = await user.save()
@@ -48,6 +50,7 @@ exports.createUser = async (req, res) => {
   }
 }
 
+// Change password (only self or admin in routes)
 exports.changePassword = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
@@ -68,15 +71,28 @@ exports.changePassword = async (req, res) => {
 exports.updateRole = async (req, res) => {
   try {
     const { role } = req.body
-    if (!['user', 'admin', 'premium user'].includes(role)) {
+    const allowedRoles = ['user', 'premium user', 'moderator', 'admin']
+    if (!allowedRoles.includes(role)) {
       return res.status(400).json({ message: 'Invalid role' })
     }
 
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      { role: role },
-      { new: true },
+        req.params.id,
+        { role },
+        { new: true },
     ).select('-password')
+
+    if (!updatedUser) return res.status(404).json({ message: 'User not found' })
+
+    try {
+      await emailService.sendRoleChangedEmail({
+        to: updatedUser.email,
+        username: updatedUser.username,
+        role: updatedUser.role,
+      })
+    } catch (e) {
+      console.warn('Role changed email failed:', e.message)
+    }
 
     res.json(updatedUser)
   } catch (err) {

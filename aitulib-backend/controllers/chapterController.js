@@ -65,9 +65,11 @@ exports.updateChapter = async (req, res) => {
 exports.deleteChapter = async (req, res) => {
     try {
         const chapter = await Chapter.findByIdAndDelete(req.params.id);
-        if (!chapter) return res.status(404).json({ message: 'Chapter Not Found' });
-        res.json({ message: 'Chapter Not Found' });
+        if (!chapter) {
+            return res.status(404).json({ message: 'Chapter Not Found' });
+        }
+        return res.json({ message: 'Chapter deleted successfully' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        return res.status(500).json({ message: err.message });
     }
 };

@@ -1,4 +1,6 @@
 const Manga = require("../models/mangaModel");
+const User = require('../models/userModel')
+const emailService = require('../services/emailService')
 
 exports.getAllManga = async (req, res) => {
     try {
@@ -61,3 +63,26 @@ exports.deleteManga = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+exports.subscribeToMangaUpdates = async (req, res) => {
+    try {
+        const manga = await Manga.findById(req.params.id)
+        if (!manga) return res.status(404).json({ message: "Manga not found" })
+
+        const user = await User.findById(req.userId).select('email username role')
+        if (!user) return res.status(404).json({ message: "User not found" })
+
+        try {
+            await emailService.sendPremiumSubscriptionEmail({
+                to: user.email,
+                username: user.username,
+                mangaTitle: manga.title,
+            })
+        } catch (e) {
+            console.warn('Subscription email failed:', e.message)
+        }
+
+        res.json({ message: 'Subscribed (email sent if SMTP configured)' })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
