@@ -1,10 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AituLIB — Users</title>
 
+    <!-- твои общие стили -->
+    <link rel="stylesheet" href="style/style.css" />
+
+    <!-- стили именно для users -->
+    <link rel="stylesheet" href="style/users.css" />
+</head>
+
+<body id="usersPage">
+<header class="header" id="header">
+    <nav class="nav">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/logo.png" alt="logo" />
+        </a>
+        <a href="top.html" class="nav-link">Categories</a>
+        <a href="users.html" class="nav-link active">Users</a>
+        <button id="dark-theme" class="theme-btn">🌙</button>
+        <button id="lang" class="theme-btn">RU</button>
+        <div class="acc">
+            <img id="account" class="account-avatar" alt="not logged" />
+        </div>
+    </nav>
+</header>
+
+<main class="users-wrap">
+    <section class="users-card">
+        <div class="users-head">
+            <div>
+                <h1 class="users-title">Users</h1>
+                <p class="users-sub">Only admin can view and delete users.</p>
+            </div>
+
+            <div class="users-actions">
+                <span id="roleBadge" class="role-badge">role: —</span>
+                <button id="refreshBtn" class="u-btn">Refresh</button>
+            </div>
+        </div>
+
+        <div id="msg" class="users-msg"></div>
+
+        <div class="users-table-wrap">
+            <table class="users-table">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Created</th>
+                    <th class="right">Action</th>
+                </tr>
+                </thead>
+                <tbody id="usersTbody"></tbody>
+            </table>
+        </div>
+
+        <div class="users-foot">
+            <span id="count" class="users-count">0 users</span>
+        </div>
+    </section>
+</main>
+
+<!-- отдельный скрипт -->
+<script src="/scripts/users.js"></script>
 </body>
 </html>
