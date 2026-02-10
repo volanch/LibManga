@@ -87,7 +87,13 @@ form.addEventListener('submit', async (event) => {
 
     const data = await response.json()
     if (!response.ok) {
-      setMessage(data.message || 'Authentication failed.', 'error')
+      let errorMessage = data.message || 'Authentication failed.'
+
+      if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
+        errorMessage = data.errors[0]
+      }
+
+      setMessage(errorMessage, 'error')
       return
     }
 
