@@ -1,0 +1,297 @@
+
+.manga-detail-container {
+    display: flex;
+    gap: 30px;
+    padding: 40px 5%;
+    background-color: var(--header-dark);
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.manga-cover-big {
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.manga-info-content h1 {
+    color: var(--accent);
+    font-size: 2.5rem;
+}
+
+.manga-meta-info {
+    margin: 20px 0;
+    color: #94a3b8;
+}
+
+.genre-badge {
+    background: var(--accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+/* Comments Section */
+.comments-section {
+    padding: 20px 5%;
+    margin-top: 40px;
+}
+
+.comment-form-container {
+    margin-bottom: 30px;
+}
+
+.comment-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--card-dark);
+    color: var(--body-text);
+    border: 1px solid #334155;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+.comment-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.submit-comment-btn {
+    margin-top: 10px;
+    width: auto;
+    padding: 0 20px;
+}
+
+.comment-error {
+    color: #ef4444;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.login-prompt {
+    padding: 20px;
+    background: var(--card-dark);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.login-prompt a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+
+.comment-item {
+    background: var(--card-dark);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--accent);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.comment-item:hover {
+    transform: translateX(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.comment-user {
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.comment-user-badge {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: normal;
+}
+
+.comment-text-display {
+    color: #e5e7eb;
+    line-height: 1.6;
+    margin: 10px 0;
+    word-wrap: break-word;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 8px;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.comment-btn {
+    background: none;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.comment-btn:hover {
+    background: #334155;
+    color: #e5e7eb;
+}
+
+.comment-btn.delete {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.comment-btn.delete:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.comment-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.edit-form {
+    margin-top: 10px;
+    display: none;
+}
+
+.edit-form.active {
+    display: block;
+}
+
+.edit-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #0f1720;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+.edit-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.edit-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.comments-empty {
+    color: #94a3b8;
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 20px;
+    color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    .manga-detail-container {
+        flex-direction: column;
+        padding: 20px 5%;
+    }
+
+    .manga-cover-big {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .manga-info-content h1 {
+        font-size: 2rem;
+    }
+
+    .comment-user {
+        font-size: 0.9rem;
+    }
+
+    .comment-actions {
+        gap: 8px;
+    }
+
+    .comment-btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .manga-detail-container {
+        padding: 15px 3%;
+    }
+
+    .manga-info-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .genre-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    .comments-section {
+        padding: 15px 3%;
+    }
+}
+
+:root.light .comment-item {
+    background: #f8f9fa;
+    border-left-color: #f97316;
+}
+
+:root.light .comment-text-display {
+    color: #1f2937;
+}
+
+:root.light .comment-textarea,
+:root.light .edit-textarea {
+    background: #ffffff;
+    color: #1f2937;
+    border-color: #d1d5db;
+}
+
+:root.light .comment-btn {
+    border-color: #d1d5db;
+    color: #6b7280;
+}
+
+:root.light .comment-btn:hover {
+    background: #e5e7eb;
+    color: #1f2937;
+}

@@ -4,72 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AituLIB - Manga Details</title>
+
   <link rel="stylesheet" href="/style/style.css">
-  <style>
-    .manga-detail-container {
-      display: flex;
-      gap: 30px;
-      padding: 40px 5%;
-      background-color: var(--header-dark);
-      border-radius: 20px;
-      margin: 20px 0;
-    }
-    .manga-cover-big {
-      width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    .manga-info-content h1 { color: var(--accent); font-size: 2.5rem; }
-    .manga-meta-info { margin: 20px 0; color: #94a3b8; }
-    .genre-badge {
-      background: var(--accent);
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-right: 5px;
-    }
-    .comments-section {
-      padding: 20px 5%;
-      margin-top: 40px;
-    }
-    .comment-item {
-      background: var(--card-dark);
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      border-left: 4px solid var(--accent);
-    }
-    .comment-user { font-weight: bold; color: var(--accent); margin-bottom: 5px; }
-  </style>
+
+  <link rel="stylesheet" href="/style/mangaDetails.css">
 </head>
+
 <body id="maid">
 <header class="header">
   <nav class="nav">
-    <a class="nav-logo" href="/"><img src="/assets/logo.png" alt="logo"></a>
+    <a class="nav-logo" href="/">
+      <img src="/assets/logo.png" alt="AituLIB logo">
+    </a>
     <a href="/" class="nav-link">Home</a>
-    <div class="acc"><img id="account" class="account-avatar" alt=""></div>
+    <div class="acc">
+      <img id="account" class="account-avatar" alt="">
+    </div>
   </nav>
 </header>
 
 <main id="manga-content">
   <div class="manga-detail-container">
     <img id="manga-img" class="manga-cover-big" src="" alt="Loading...">
+
     <div class="manga-info-content">
       <h1 id="manga-title">Loading...</h1>
-      <div id="manga-genres" style="margin: 15px 0;"></div>
+
+      <div id="manga-genres"></div>
+
       <div class="manga-meta-info">
         <p><strong>Status:</strong> <span id="manga-status"></span></p>
         <p><strong>Author:</strong> <span id="manga-author"></span></p>
       </div>
-      <p id="manga-desc" style="line-height: 1.8;"></p>
-      <button id="subscribe-btn" class="carousel-btn" style="width: auto; padding: 0 20px; margin-top: 20px;">Subscribe to Updates</button>
+
+      <p id="manga-desc"></p>
+
+      <button id="subscribe-btn" class="carousel-btn submit-comment-btn">
+        Subscribe to Updates
+      </button>
     </div>
   </div>
 
   <section class="comments-section">
     <h2 class="section-title highlight">Comments</h2>
+
+    <div id="comment-form-container" class="comment-form-container" style="display: none;">
+        <textarea
+                id="comment-text"
+                class="comment-textarea"
+                placeholder="Write your comment... (Ctrl+Enter to submit)"
+                aria-label="Comment text"
+        ></textarea>
+
+      <button id="submit-comment" class="carousel-btn submit-comment-btn">
+        Post Comment
+      </button>
+
+      <p id="comment-error" class="comment-error" style="display: none;" role="alert"></p>
+    </div>
+
+    <div id="login-prompt" class="login-prompt" style="display: none;">
+      <p>Please <a href="/signin">sign in</a> to leave a comment.</p>
+    </div>
+
     <div id="comments-list">
+      <p class="loading-spinner">Loading comments...</p>
     </div>
   </section>
 </main>
@@ -78,61 +77,6 @@
   <p>© 2025 AituLIB (Kovernikov, Sekezhanov, Ibragimov, Nabet)</p>
 </footer>
 
-<script>
-  document.addEventListener("DOMContentLoaded", async () => {
-    // 1. ПРАВИЛЬНЫЙ СПОСОБ получения ID из ?id=...
-    const urlParams = new URLSearchParams(window.location.search);
-    let mangaId = urlParams.get('id');
-
-    if (!mangaId) {
-      const pathParts = window.location.pathname.split('/');
-      mangaId = pathParts[pathParts.length - 1];
-    }
-
-    if (!mangaId || mangaId === 'manga.html') {
-      console.error("ID манги не найден в URL");
-      return;
-    }
-
-    try {
-      const response = await fetch(`/api/manga/${mangaId}`);
-      const manga = await response.json();
-
-      if (response.status === 404) {
-        document.getElementById('manga-content').innerHTML = "<h1>Manga not found</h1>";
-        return;
-      }
-
-      document.getElementById('manga-img').src = manga.coverImage;
-      document.getElementById('manga-title').textContent = manga.title;
-      document.getElementById('manga-status').textContent = manga.status;
-      document.getElementById('manga-author').textContent = manga.author || 'Unknown';
-      document.getElementById('manga-desc').textContent = manga.description;
-
-      const genresDiv = document.getElementById('manga-genres');
-      manga.genres.forEach(g => {
-        const span = document.createElement('span');
-        span.className = 'genre-badge';
-        span.textContent = g;
-        genresDiv.appendChild(span);
-      });
-
-      const commList = document.getElementById('comments-list');
-      if (manga.comments && manga.comments.length > 0) {
-        commList.innerHTML = manga.comments.map(c => `
-                        <div class="comment-item">
-                            <div class="comment-user">User #${c.user || 'Guest'}</div>
-                            <div class="comment-text">${c.text || 'No text'}</div>
-                        </div>
-                    `).join('');
-      } else {
-        commList.innerHTML = "<p>No comments yet. Be the first!</p>";
-      }
-
-    } catch (err) {
-      console.error("Error loading details:", err);
-    }
-  });
-</script>
+<script src="/scripts/mangaDetails.js"></script>
 </body>
 </html>
