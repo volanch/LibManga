@@ -1,5 +1,6 @@
 # AituLIB (LibManga) — Node.js + Express + MongoDB Atlas
 
+https://libmanga.onrender.com/index.html
 Full-stack web app for browsing manga, reading chapters, and interacting via comments. Includes authentication with roles (RBAC), admin user management, and an account page with password change + logout.
 
 ---
@@ -7,31 +8,37 @@ Full-stack web app for browsing manga, reading chapters, and interacting via com
 ## Features
 
 ### Authentication & Roles
+
 - Sign up (new user saved to MongoDB Atlas, default role: `user`)
 - Sign in (JWT issued; role is taken from DB)
 - Roles supported: `user`, `premium user`, `moderator`, `admin`
 
 ### Manga
+
 - Browse manga list (carousel/top + last updated + trending)
 - Manga details page (by `id`)
 - Moderator can create/update manga
 - Admin can delete manga
 
 ### Chapters
+
 - View chapters (by manga)
 - Moderator can create/update chapters
 - Admin can delete chapters
 
 ### Comments
+
 - Add comment (authorized users)
 - Edit/delete own comments
 - Like comments
 
 ### Admin panel
+
 - Users list page (admin only)
 - Admin can delete users directly on the page
 
 ### Account page
+
 - Show user info (username, email, role, user id)
 - Change password
 - Logout
@@ -39,6 +46,7 @@ Full-stack web app for browsing manga, reading chapters, and interacting via com
 ---
 
 ## Tech Stack
+
 - Backend: Node.js, Express
 - DB: MongoDB Atlas (Mongoose)
 - Auth: JWT (`jsonwebtoken`), password hashing (`bcryptjs`)
@@ -71,7 +79,7 @@ signin.html
 signup.html
 ...
 
-````
+```
 
 > Note: HTML pages are stored in `views/`. The server is configured to serve `views/*.html` routes like `/users.html`, `/account.html`, etc.
 
@@ -80,10 +88,11 @@ signup.html
 ## Setup Instructions
 
 ### 1) Install dependencies
+
 ```bash
 cd aitulib-backend
 npm install
-````
+```
 
 ### 2) Create `.env`
 
@@ -113,11 +122,11 @@ node server.js
 
 Open in browser:
 
-* `http://localhost:3000/` (home)
-* `http://localhost:3000/signin`
-* `http://localhost:3000/signup`
-* `http://localhost:3000/users.html` (admin only)
-* `http://localhost:3000/account.html` (logged-in users)
+- `http://localhost:3000/` (home)
+- `http://localhost:3000/signin`
+- `http://localhost:3000/signup`
+- `http://localhost:3000/users.html` (admin only)
+- `http://localhost:3000/account.html` (logged-in users)
 
 ---
 
@@ -153,7 +162,7 @@ ALLOW_ROLE_ON_SIGNUP=false
 
 ### Option B (MongoDB Atlas)
 
-* Create a normal user, then update its document:
+- Create a normal user, then update its document:
 
 ```json
 { "role": "admin" }
@@ -165,7 +174,7 @@ ALLOW_ROLE_ON_SIGNUP=false
 
 Base URL:
 
-* Local: `http://localhost:3000`
+- Local: `http://localhost:3000`
 
 ### Authorization
 
@@ -192,7 +201,13 @@ Body:
 Response:
 
 ```json
-{ "id": "...", "username": "...", "email": "...", "role": "user", "accessToken": "..." }
+{
+  "id": "...",
+  "username": "...",
+  "email": "...",
+  "role": "user",
+  "accessToken": "..."
+}
 ```
 
 #### Sign in
@@ -313,7 +328,6 @@ Body:
 
 ## Screenshots (All Web App Features)
 
-
 ### 1) Authentication (Sign In / Sign Up)
 
 ![img.png](pngs/img.png)
@@ -343,7 +357,7 @@ Body:
 2. Use header `Authorization: Bearer <token>` for protected endpoints
 3. Admin endpoints:
 
-  * `GET /api/users`
-  * `DELETE /api/users/:id`
+- `GET /api/users`
+- `DELETE /api/users/:id`
 
 ---
