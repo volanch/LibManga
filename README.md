@@ -313,35 +313,27 @@ Body:
 
 ## Screenshots (All Web App Features)
 
-Place screenshots here:
-
-```
-aitulib-backend/public/assets/readme/
-```
-
-Then reference them below.
 
 ### 1) Authentication (Sign In / Sign Up)
 
-![photo_2026-02-11_11-15-47.jpg](../../Downloads/photo_2026-02-11_11-15-47.jpg)
+![img.png](pngs/img.png)
+![img_1.png](pngs/img_1.png)
 
 ### 2) Home Page (Manga carousel + sections)
 
-![Home](public/assets/readme/home.jpg)
+![img.png](pngs/img2.png)
 
 ### 3) Users Page (Admin only: list + delete)
 
-![Users](public/assets/readme/users.jpg)
+![img_2.png](pngs/img_7.png)
 
 ### 4) Account Page (Profile + Change password)
 
-![Account](public/assets/readme/account.jpg)
+![img_3.png](pngs/img_8.png)
 
 ### 5) Comments (Create/Edit/Delete/Like)
 
-![Comments](public/assets/readme/comments.jpg)
-
-> Replace filenames above with your actual screenshot names.
+![img_4.png](pngs/img_9.png)
 
 ---
 
