@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AituLIB — Account</title>
+
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="style/account.css" />
+</head>
+
+<body id="accountPage">
+<header class="header" id="header">
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">
+      <img src="assets/logo.png" alt="logo" />
+    </a>
+    <a href="top.html" class="nav-link">Categories</a>
+    <a href="users.html" class="nav-link">Users</a>
+    <a href="account.html" class="nav-link active">Account</a>
+    <button id="dark-theme" class="theme-btn">🌙</button>
+    <button id="lang" class="theme-btn">RU</button>
+
+    <div class="acc">
+      <img id="account" class="account-avatar" alt="account" />
+    </div>
+  </nav>
+</header>
+
+<main class="acc-wrap">
+  <section class="acc-card">
+    <div class="acc-head">
+      <div>
+        <h1 class="acc-title">My Account</h1>
+        <p class="acc-sub">Profile info and security settings</p>
+      </div>
+
+      <div class="acc-actions">
+        <button id="logoutBtn" class="btn danger" type="button">Logout</button>
+      </div>
+    </div>
+
+    <div id="msg" class="acc-msg" role="status" aria-live="polite"></div>
+
+    <div class="acc-grid">
+      <div class="panel">
+        <h2 class="panel-title">Profile</h2>
+
+        <div class="kv">
+          <div class="k">Username</div>
+          <div class="v" id="pUsername">—</div>
+        </div>
+        <div class="kv">
+          <div class="k">Email</div>
+          <div class="v" id="pEmail">—</div>
+        </div>
+        <div class="kv">
+          <div class="k">Role</div>
+          <div class="v"><span class="pill" id="pRole">—</span></div>
+        </div>
+        <div class="kv">
+          <div class="k">User ID</div>
+          <div class="v muted" id="pId">—</div>
+        </div>
+
+        <button id="refreshBtn" class="btn ghost" type="button">Refresh from API</button>
+      </div>
+
+      <div class="panel">
+        <h2 class="panel-title">Change password</h2>
+
+        <form id="pwdForm" class="form">
+          <label class="label">
+            <span>Old password</span>
+            <input id="oldPassword" type="password" class="input" required />
+          </label>
+
+          <label class="label">
+            <span>New password</span>
+            <input id="newPassword" type="password" class="input" minlength="6" required />
+          </label>
+
+          <label class="label">
+            <span>Confirm new password</span>
+            <input id="confirmNewPassword" type="password" class="input" minlength="6" required />
+          </label>
+
+          <button class="btn" type="submit">Update password</button>
+        </form>
+
+        <p class="hint">
+          Password must be at least 6 characters (adjust if your backend requires more).
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/scripts/account.js"></script>
+</body>
+</html>

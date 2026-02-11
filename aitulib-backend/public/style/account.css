@@ -1,0 +1,140 @@
+#accountPage {
+    background: radial-gradient(900px 500px at 10% 0%, rgba(0, 110, 255, 0.25), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(0, 180, 255, 0.18), transparent 60%),
+    linear-gradient(180deg, #060b1a, #08102a);
+    min-height: 100vh;
+}
+
+.acc-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+}
+
+.acc-card {
+    border: 1px solid rgba(110, 170, 255, 0.18);
+    border-radius: 18px;
+    background: rgba(8, 16, 42, 0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+}
+
+.acc-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 16px 10px;
+    border-bottom: 1px solid rgba(110, 170, 255, 0.12);
+}
+
+.acc-title {
+    margin: 0 0 6px;
+    color: rgba(240, 248, 255, 0.92);
+    font-size: 22px;
+}
+
+.acc-sub {
+    margin: 0;
+    color: rgba(240, 248, 255, 0.65);
+    font-size: 14px;
+}
+
+.acc-msg {
+    padding: 10px 16px 0;
+    min-height: 22px;
+    font-size: 13px;
+    color: rgba(240, 248, 255, 0.75);
+}
+.acc-msg.error { color: rgba(239, 68, 68, 0.95); }
+.acc-msg.ok { color: rgba(34, 197, 94, 0.95); }
+.acc-msg.info { color: rgba(56, 189, 248, 0.95); }
+
+.acc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 14px 16px 18px;
+}
+
+.panel {
+    border: 1px solid rgba(110, 170, 255, 0.14);
+    border-radius: 16px;
+    padding: 14px;
+    background: rgba(6, 11, 26, 0.35);
+}
+
+.panel-title {
+    margin: 0 0 12px;
+    font-size: 16px;
+    color: rgba(240, 248, 255, 0.9);
+}
+
+.kv {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(110, 170, 255, 0.1);
+}
+
+.k { color: rgba(240, 248, 255, 0.65); font-size: 13px; }
+.v { color: rgba(240, 248, 255, 0.92); font-weight: 700; }
+
+.muted { color: rgba(240, 248, 255, 0.6); font-weight: 500; }
+
+.pill {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    background: rgba(56, 189, 248, 0.12);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.form { display: grid; gap: 10px; }
+.label { display: grid; gap: 6px; color: rgba(240, 248, 255, 0.75); font-size: 13px; }
+
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(110, 170, 255, 0.18);
+    background: rgba(8, 16, 42, 0.55);
+    color: rgba(240, 248, 255, 0.92);
+    outline: none;
+}
+
+.input:focus {
+    border-color: rgba(110, 170, 255, 0.35);
+}
+
+.btn {
+    border: 1px solid rgba(110, 170, 255, 0.28);
+    background: rgba(0, 110, 255, 0.14);
+    color: rgba(240, 248, 255, 0.92);
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn:hover { background: rgba(0, 110, 255, 0.22); }
+.btn.ghost { background: transparent; }
+.btn.danger {
+    background: rgba(239, 68, 68, 0.14);
+    border-color: rgba(239, 68, 68, 0.35);
+}
+.btn.danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+.hint {
+    margin: 10px 0 0;
+    color: rgba(240, 248, 255, 0.6);
+    font-size: 12px;
+}
+
+@media (max-width: 900px) {
+    .acc-grid { grid-template-columns: 1fr; }
+    .kv { grid-template-columns: 120px 1fr; }
+}
