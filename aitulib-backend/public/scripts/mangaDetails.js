@@ -353,6 +353,11 @@ function renderMangaDetails(manga) {
 function initializePage() {
     currentUser = getCurrentUser();
 
+    const savedAvatar = localStorage.getItem("userAvatar");
+    if (savedAvatar && document.getElementById("account")) {
+        document.getElementById("account").src = savedAvatar;
+    }
+
     if (currentUser) {
         document.getElementById('comment-form-container').style.display = 'block';
         document.getElementById('login-prompt').style.display = 'none';
