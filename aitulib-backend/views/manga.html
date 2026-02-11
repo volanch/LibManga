@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AituLIB - Manga Details</title>
+
+  <link rel="stylesheet" href="/style/style.css">
+
+  <link rel="stylesheet" href="/style/mangaDetails.css">
+</head>
+
+<body id="maid">
+<header class="header">
+  <nav class="nav">
+    <a class="nav-logo" href="/">
+      <img src="/assets/logo.png" alt="AituLIB logo">
+    </a>
+    <a href="/" class="nav-link">Home</a>
+    <div class="acc">
+      <img id="account" class="account-avatar" alt="">
+    </div>
+  </nav>
+</header>
+
+<main id="manga-content">
+  <div class="manga-detail-container">
+    <img id="manga-img" class="manga-cover-big" src="" alt="Loading...">
+
+    <div class="manga-info-content">
+      <h1 id="manga-title">Loading...</h1>
+
+      <div id="manga-genres"></div>
+
+      <div class="manga-meta-info">
+        <p><strong>Status:</strong> <span id="manga-status"></span></p>
+        <p><strong>Author:</strong> <span id="manga-author"></span></p>
+      </div>
+
+      <p id="manga-desc"></p>
+
+      <button id="subscribe-btn" class="carousel-btn submit-comment-btn">
+        Subscribe to Updates
+      </button>
+    </div>
+  </div>
+
+  <section class="comments-section">
+    <h2 class="section-title highlight">Comments</h2>
+
+    <div id="comment-form-container" class="comment-form-container" style="display: none;">
+        <textarea
+                id="comment-text"
+                class="comment-textarea"
+                placeholder="Write your comment... (Ctrl+Enter to submit)"
+                aria-label="Comment text"
+        ></textarea>
+
+      <button id="submit-comment" class="carousel-btn submit-comment-btn">
+        Post Comment
+      </button>
+
+      <p id="comment-error" class="comment-error" style="display: none;" role="alert"></p>
+    </div>
+
+    <div id="login-prompt" class="login-prompt" style="display: none;">
+      <p>Please <a href="/signin">sign in</a> to leave a comment.</p>
+    </div>
+
+    <div id="comments-list">
+      <p class="loading-spinner">Loading comments...</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2025 AituLIB (Kovernikov, Sekezhanov, Ibragimov, Nabet)</p>
+</footer>
+
+<script src="/scripts/mangaDetails.js"></script>
+</body>
+</html>

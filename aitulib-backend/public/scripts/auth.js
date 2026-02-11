@@ -2,29 +2,30 @@ const form = document.getElementById('authForm')
 const formMessage = document.getElementById('formMessage')
 
 const setMessage = (text, type) => {
-  formMessage.textContent = text
+  formMessage.textContent = text || ''
   formMessage.classList.remove('error', 'success')
-  if (type) {
-    formMessage.classList.add(type)
-  }
+  if (type) formMessage.classList.add(type)
 }
 
 const storeSession = (payload) => {
   localStorage.setItem('accessToken', payload.accessToken)
+
   localStorage.setItem(
-    'user',
-    JSON.stringify({
-      id: payload.id,
-      username: payload.username,
-      email: payload.email,
-      role: payload.role,
-    }),
+      'user',
+      JSON.stringify({
+        id: payload.id,
+        username: payload.username,
+        email: payload.email,
+        role: payload.role,
+      }),
   )
-  localStorage.setItem('login', payload.username)
+
+  localStorage.setItem('login', payload.username || '')
   localStorage.setItem('isLoggedIn', 'true')
+  localStorage.setItem('user_email', payload.email || '')
 }
 
-const getPageType = () => document.body.dataset.page
+const getPageType = () => document.body.dataset.page // 'signup' or 'signin'
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
@@ -44,9 +45,7 @@ form.addEventListener('submit', async (event) => {
   if (pageType === 'signup') {
     const username = document.getElementById('username').value.trim()
     const email = document.getElementById('email').value.trim()
-    const confirmPassword = document
-      .getElementById('confirmPassword')
-      .value.trim()
+    const confirmPassword = document.getElementById('confirmPassword').value.trim()
 
     if (!username || !email) {
       setMessage('Username and email are required.', 'error')
@@ -67,27 +66,32 @@ form.addEventListener('submit', async (event) => {
     payload = { username, email, password }
   } else {
     const identity = document.getElementById('identity').value.trim()
+
     if (!identity) {
       setMessage('Enter your username or email.', 'error')
       return
     }
+
     payload = identity.includes('@')
-      ? { email: identity, password }
-      : { username: identity, password }
+        ? { email: identity, password }
+        : { username: identity, password }
   }
 
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
 
-    const data = await response.json()
+    const data = await response.json().catch(() => ({}))
+
     if (!response.ok) {
-      setMessage(data.message || 'Authentication failed.', 'error')
+      let errorMessage = data.message || 'Authentication failed.'
+      if (Array.isArray(data.errors) && data.errors.length > 0) {
+        errorMessage = data.errors[0]
+      }
+      setMessage(errorMessage, 'error')
       return
     }
 

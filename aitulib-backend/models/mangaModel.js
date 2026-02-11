@@ -9,26 +9,13 @@ const mangaSchema = new mongoose.Schema({
             type: String
         },
         coverImage: {
-            type: String // url
-        },
-        genres: [
-            {
-                type: String
-            }
-        ],
-        status: {
-            type: String,
-            default: 'Ongoing'
-        },
-        author: {
             type: String
         },
-        comments: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Comment'
-            }
-        ]
+        genres: [{type: String}],
+        status: {type: String, default: 'Publishing'},
+        author: {type: String},
+        comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
+        published: {type: Date}
     },
     {
         timestamps: true
