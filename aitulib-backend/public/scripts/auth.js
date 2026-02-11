@@ -11,13 +11,13 @@ const storeSession = (payload) => {
   localStorage.setItem('accessToken', payload.accessToken)
 
   localStorage.setItem(
-      'user',
-      JSON.stringify({
-        id: payload.id,
-        username: payload.username,
-        email: payload.email,
-        role: payload.role,
-      }),
+    'user',
+    JSON.stringify({
+      id: payload.id,
+      username: payload.username,
+      email: payload.email,
+      role: payload.role,
+    }),
   )
 
   localStorage.setItem('login', payload.username || '')
@@ -45,7 +45,9 @@ form.addEventListener('submit', async (event) => {
   if (pageType === 'signup') {
     const username = document.getElementById('username').value.trim()
     const email = document.getElementById('email').value.trim()
-    const confirmPassword = document.getElementById('confirmPassword').value.trim()
+    const confirmPassword = document
+      .getElementById('confirmPassword')
+      .value.trim()
 
     if (!username || !email) {
       setMessage('Username and email are required.', 'error')
@@ -73,8 +75,8 @@ form.addEventListener('submit', async (event) => {
     }
 
     payload = identity.includes('@')
-        ? { email: identity, password }
-        : { username: identity, password }
+      ? { email: identity, password }
+      : { username: identity, password }
   }
 
   try {
@@ -96,11 +98,21 @@ form.addEventListener('submit', async (event) => {
     }
 
     storeSession(data)
-    setMessage('Success! Redirecting...', 'success')
+
+    if (pageType === 'signup' && data.emailSent) {
+      setMessage(
+        '✓ Account created! Check your email for confirmation. Redirecting...',
+        'success',
+      )
+    } else if (pageType === 'signup') {
+      setMessage('✓ Account created! Redirecting...', 'success')
+    } else {
+      setMessage('Success! Redirecting...', 'success')
+    }
 
     setTimeout(() => {
       window.location.href = '/'
-    }, 900)
+    }, 1500)
   } catch (error) {
     setMessage('Network error. Please try again.', 'error')
   }

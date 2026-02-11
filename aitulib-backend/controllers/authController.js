@@ -36,11 +36,13 @@ exports.signup = async (req, res) => {
       role: safeRole,
     })
 
+    let emailSent = false
     try {
-      await emailService.sendWelcomeEmail({
+      const result = await emailService.sendWelcomeEmail({
         to: user.email,
         username: user.username,
       })
+      emailSent = !result.skipped
     } catch (e) {
       // Don't fail signup because of email issues
       console.warn('Welcome email failed:', e.message)
@@ -54,6 +56,7 @@ exports.signup = async (req, res) => {
       email: user.email,
       role: user.role,
       accessToken: token,
+      emailSent,
     })
   } catch (err) {
     res.status(500).json({ message: err.message })
