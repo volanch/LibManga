@@ -138,6 +138,10 @@ function logout() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    const savedAvatar = localStorage.getItem("userAvatar");
+    if (savedAvatar && document.getElementById("account")) {
+        document.getElementById("account").src = savedAvatar;
+    }
     const sess = requireLogin()
     if (!sess) return
 
