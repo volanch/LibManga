@@ -1,30 +1,48 @@
+const account = document.getElementById("account");
+async function loadWaifuAvatar() {
+    const account = document.getElementById("account");
+    try {
+        const response = await fetch('https://api.waifu.im/images?is_nsfw=false');
+
+        if (!response.ok) {
+            throw new Error(`Ошибка API: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.images && data.images.length > 0) {
+            account.src = data.images[0].url;
+        } else {
+            account.src = 'assets/Card 1.png';
+        }
+    } catch (error) {
+        console.error('Ошибка загрузки аватарки:', error);
+        account.src = 'assets/Card 1.png';
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const themeBtn = document.getElementById("dark-theme");
     const langButton = document.getElementById("lang");
     const topGrid = document.getElementById("top-grid");
     const galleryGrid = document.getElementById("gallery-grid");
     const trendGrid = document.getElementById("trend-grid");
-    const account = document.getElementById("account");
+
     const music = document.getElementById("myAudio");
 
-    // Универсальная функция загрузки данных из БД
     async function loadMangaFromDB() {
         try {
-            // Запрашиваем данные из твоего нового API
             const response = await fetch('/api/manga');
             const mangas = await response.json();
 
-            // Очищаем сетки перед заполнением
             topGrid.innerHTML = '';
             galleryGrid.innerHTML = '';
             trendGrid.innerHTML = '';
 
             mangas.forEach(m => {
-                // ПЕРЕХОД ПО ID: меняем href на /api/manga/${m._id} или на страницу просмотра
-                // Обычно для пользователя создается страница manga.html?id=...
                 const detailLink = `manga.html?id=${m._id}`;
 
-                // 1. Заполняем карусель (Top)
                 topGrid.innerHTML += `
                     <a href="${detailLink}" class="card">
                         <img src="${m.coverImage}" alt="cover" onerror="this.src='assets/default.jpg'">
@@ -34,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </a>`;
 
-                // 2. Заполняем "Last Updated"
                 galleryGrid.innerHTML += `
                     <a href="${detailLink}" class="gallery-item">
                         <img src="${m.coverImage}" alt="cover">
@@ -44,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </a>`;
 
-                // 3. Заполняем "Trending" (здесь просто для примера те же данные)
                 trendGrid.innerHTML += `
                     <a href="${detailLink}" class="gallery-item">
                         <img src="${m.coverImage}" alt="cover">
@@ -57,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Ошибка загрузки из БД:", err);
         }
     }
+
 
     const savedTheme = localStorage.getItem("theme") || "dark";
     if (savedTheme === "light") {
