@@ -1,7 +1,6 @@
 let currentUser = null;
 let currentMangaId = null;
 
-
 function getCurrentUser() {
     const token = localStorage.getItem('accessToken');
     const userData = localStorage.getItem('user');
@@ -16,7 +15,6 @@ function getCurrentUser() {
     }
     return null;
 }
-
 
 function getAuthToken() {
     return localStorage.getItem('accessToken');
@@ -50,6 +48,7 @@ function hideError(elementId = 'comment-error') {
     }
 }
 
+
 async function loadComments() {
     try {
         const response = await fetch(`/api/comments?mangaId=${currentMangaId}`);
@@ -67,6 +66,7 @@ async function loadComments() {
     }
 }
 
+
 function renderComments(comments) {
     const commList = document.getElementById('comments-list');
 
@@ -78,6 +78,7 @@ function renderComments(comments) {
     commList.innerHTML = comments.map(comment => createCommentHTML(comment)).join('');
     attachCommentHandlers();
 }
+
 
 function createCommentHTML(comment) {
     const isOwner = currentUser && comment.userId && comment.userId._id === currentUser.id;
@@ -100,6 +101,14 @@ function createCommentHTML(comment) {
         </div>
       </div>
       <div class="comment-date">${formatDate(comment.createdAt)}</div>
+      
+      <div class="comment-likes">
+        <button class="like-btn" data-comment-id="${comment._id}">
+          <span class="like-icon">❤️</span>
+          <span class="likes-count">${comment.likes || 0}</span>
+        </button>
+      </div>
+      
       ${(canEdit || canDelete) ? `
         <div class="comment-actions">
           ${canEdit ? '<button class="comment-btn edit-btn">Edit</button>' : ''}
@@ -110,11 +119,13 @@ function createCommentHTML(comment) {
   `;
 }
 
+
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
+
 
 async function createComment() {
     const textarea = document.getElementById('comment-text');
@@ -152,6 +163,7 @@ async function createComment() {
         showError('Failed to post comment. Please try again.');
     }
 }
+
 
 async function updateComment(commentId, newText) {
     if (!newText.trim()) {
@@ -209,6 +221,42 @@ async function deleteComment(commentId) {
     }
 }
 
+
+async function likeComment(commentId) {
+    try {
+        const response = await fetch(`/api/comments/${commentId}/like`, {
+            method: 'PATCH'
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+
+            // Обновляем счетчик лайков без перезагрузки всех комментариев
+            const commentItem = document.querySelector(`[data-comment-id="${commentId}"]`);
+            if (commentItem) {
+                const likesCount = commentItem.querySelector('.likes-count');
+                if (likesCount) {
+                    likesCount.textContent = data.likes;
+                }
+
+                // Добавляем визуальный эффект
+                const likeBtn = commentItem.querySelector('.like-btn');
+                if (likeBtn) {
+                    likeBtn.classList.add('liked');
+                    setTimeout(() => {
+                        likeBtn.classList.remove('liked');
+                    }, 1000);
+                }
+            }
+        } else {
+            console.error('Failed to like comment');
+        }
+    } catch (err) {
+        console.error('Error liking comment:', err);
+    }
+}
+
+
 function attachCommentHandlers() {
     document.querySelectorAll('.edit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -242,7 +290,6 @@ function attachCommentHandlers() {
         });
     });
 
-
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', async function() {
             const commentItem = this.closest('.comment-item');
@@ -251,8 +298,14 @@ function attachCommentHandlers() {
             await deleteComment(commentId);
         });
     });
-}
 
+    document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', async function() {
+            const commentId = this.dataset.commentId;
+            await likeComment(commentId);
+        });
+    });
+}
 
 async function loadMangaDetails(mangaId) {
     try {
@@ -274,6 +327,7 @@ async function loadMangaDetails(mangaId) {
         document.getElementById('manga-content').innerHTML = "<h1>Error loading manga</h1>";
     }
 }
+
 
 function renderMangaDetails(manga) {
     document.getElementById('manga-img').src = manga.coverImage || '/assets/default-cover.jpg';
