@@ -1,17 +1,22 @@
-const account = document.getElementById("account");
+
 async function loadWaifuAvatar() {
     const account = document.getElementById("account");
+    const savedAvatar = localStorage.getItem("userAvatar");
+
+    if (savedAvatar) {
+        account.src = savedAvatar;
+        return;
+    }
     try {
         const response = await fetch('https://api.waifu.im/images?is_nsfw=false');
-
-        if (!response.ok) {
-            throw new Error(`Ошибка API: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Ошибка API: ${response.status}`);
 
         const data = await response.json();
 
-        if (data.images && data.images.length > 0) {
-            account.src = data.images[0].url;
+        if (data.items && data.items.length > 0) {
+            const imageUrl = data.items[0].url;
+            account.src = imageUrl;
+            localStorage.setItem("userAvatar", imageUrl);
         } else {
             account.src = 'assets/Card 1.png';
         }
@@ -20,7 +25,6 @@ async function loadWaifuAvatar() {
         account.src = 'assets/Card 1.png';
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const themeBtn = document.getElementById("dark-theme");
@@ -73,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Ошибка загрузки из БД:", err);
         }
     }
+
+    loadWaifuAvatar();
 
 
     const savedTheme = localStorage.getItem("theme") || "dark";

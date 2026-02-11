@@ -133,4 +133,9 @@ document.addEventListener('click', (e) => {
 window.addEventListener('DOMContentLoaded', () => {
     $('refreshBtn')?.addEventListener('click', loadUsers)
     loadUsers()
+
+    const savedAvatar = localStorage.getItem("userAvatar");
+    if (savedAvatar && document.getElementById("account")) {
+        document.getElementById("account").src = savedAvatar;
+    }
 })
