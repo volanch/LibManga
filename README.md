@@ -1,126 +1,349 @@
-# LibManga
+# AituLIB (LibManga) — Node.js + Express + MongoDB Atlas
 
-A responsive, theme-adaptive manga library website built with HTML, CSS, and JavaScript.  
-Created by **Kovernikov Vladislav, Sekezhanov Diyar, Tamerlan Ibragimov** for the final project showcase.
-
-**Live Demo:** [https://volanch.github.io/LibManga/](https://volanch.github.io/LibManga/)
+Full-stack web app for browsing manga, reading chapters, and interacting via comments. Includes authentication with roles (RBAC), admin user management, and an account page with password change + logout.
 
 ---
 
-## 1. Responsiveness
+## Features
 
-- Implemented responsive design using media queries for:
-    - **Tablets**
-    - **Desktops**
-    - **Mobiles**
-- `.chapters-gallery` and `.card-row` grids dynamically adjust layout for various device widths.
+### Authentication & Roles
+- Sign up (new user saved to MongoDB Atlas, default role: `user`)
+- Sign in (JWT issued; role is taken from DB)
+- Roles supported: `user`, `premium user`, `moderator`, `admin`
 
----
+### Manga
+- Browse manga list (carousel/top + last updated + trending)
+- Manga details page (by `id`)
+- Moderator can create/update manga
+- Admin can delete manga
 
-## 2. Hosting
+### Chapters
+- View chapters (by manga)
+- Moderator can create/update chapters
+- Admin can delete chapters
 
-The project is hosted on **GitHub Pages**:  
-➡️ [https://volanch.github.io/LibManga/](https://volanch.github.io/LibManga/)
+### Comments
+- Add comment (authorized users)
+- Edit/delete own comments
+- Like comments
 
----
+### Admin panel
+- Users list page (admin only)
+- Admin can delete users directly on the page
 
-## 3. Light and Dark Modes on Local Storage
-
-- Fully implemented **light/dark theme** toggle.
-- Theme preference is **saved in `localStorage`** for persistence between sessions.
-- Smooth transitions using `.theme-transition` CSS class.
-- Dynamic icon updates:
-    - ☀️ Light mode
-    - 🌙 Dark mode
-
----
-
-## 4. Design Quality
-
-- Strong **contrast** and **readability** in both light and dark themes.
-- Consistent UI styling across:
-    - Cards
-    - FAQ sections
-    - Buttons
-    - Popup and subscription forms
-- Clean typography and balanced spacing ensure professional appearance.
+### Account page
+- Show user info (username, email, role, user id)
+- Change password
+- Logout
 
 ---
 
-## 5. Enhanced JavaScript Functionality
+## Tech Stack
+- Backend: Node.js, Express
+- DB: MongoDB Atlas (Mongoose)
+- Auth: JWT (`jsonwebtoken`), password hashing (`bcryptjs`)
+- Email (optional): `nodemailer`
+- Frontend: HTML/CSS/JS (plus jQuery in some pages)
+
+---
+
+## Project Structure
+
+```
+
+aitulib-backend/
+server.js
+config/
+controllers/
+middlewares/
+models/
+routes/
+services/
+public/
+style/
+scripts/
+assets/
+views/
+index.html
+users.html
+account.html
+signin.html
+signup.html
+...
+
+````
+
+> Note: HTML pages are stored in `views/`. The server is configured to serve `views/*.html` routes like `/users.html`, `/account.html`, etc.
+
+---
+
+## Setup Instructions
+
+### 1) Install dependencies
+```bash
+cd aitulib-backend
+npm install
+````
+
+### 2) Create `.env`
+
+Create file: `aitulib-backend/.env`
+
+```env
+MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
+PORT=3000
+JWT_SECRET=your_super_secret
+
+# Optional email (SMTP)
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=your_email@example.com
+SMTP_PASS=your_password
+SMTP_FROM=your_email@example.com
+
+# Optional: allow selecting role at signup (recommended OFF in production)
+ALLOW_ROLE_ON_SIGNUP=false
+```
+
+### 3) Run the server
+
+```bash
+node server.js
+```
+
+Open in browser:
+
+* `http://localhost:3000/` (home)
+* `http://localhost:3000/signin`
+* `http://localhost:3000/signup`
+* `http://localhost:3000/users.html` (admin only)
+* `http://localhost:3000/account.html` (logged-in users)
+
+---
+
+## Admin Setup (How to get an Admin account)
+
+By default, all new signups get role `user`.
+To create an admin for testing/demo:
+
+### Option A (quick)
+
+1. Set in `.env`:
+
+```env
+ALLOW_ROLE_ON_SIGNUP=true
+```
+
+2. Sign up sending role:
+
+```json
+{
+  "username": "admin",
+  "email": "admin@test.com",
+  "password": "Admin123!",
+  "role": "admin"
+}
+```
+
+3. Set back:
+
+```env
+ALLOW_ROLE_ON_SIGNUP=false
+```
+
+### Option B (MongoDB Atlas)
+
+* Create a normal user, then update its document:
+
+```json
+{ "role": "admin" }
+```
+
+---
+
+## API Documentation
+
+Base URL:
+
+* Local: `http://localhost:3000`
+
 ### Authorization
-- Keeps information about user in local storage
-- Also shows its data in Profile popup
 
-### Form Validation
-- Subscription popup validates email inputs before submission.
+Protected routes require header:
 
-### Search and Filtration
-- Real-time search bar filters chapters dynamically.
-- Displays top 4 live suggestions.
-- Clicking a suggestion automatically filters the displayed results.
-  ![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121018.png)
-### Interactivity
-- All buttons, popups, and form controls are fully functional and animated.
+```
+Authorization: Bearer <accessToken>
+```
 
 ---
 
-## 6. Creative Animation
+### Auth
 
-- **Hover effects** on cards: smooth scaling and shadow transitions.
-  ![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121547.png)
-  ![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121616.png)
-- **Tooltip animation** for copy button.
-- **Button hover transitions** for better user feedback.
-- **Scroll progress bar** to indicate reading progress.
-- **Fade-in and slide animation for headings**, enhancing page entrance dynamics.
+#### Sign up
 
----
+`POST /api/auth/signup`
 
-## 7 External API
-- **Avatars are loading from waifu.im API**
+Body:
 
-![alt text](assets/readme/Снимок%20экрана%202025-11-12%20121823.png)
-![alt text](assets/readme/Снимок%20экрана%202025-11-12%20122025.png)
----
+```json
+{ "username": "user1", "email": "user1@test.com", "password": "123456" }
+```
 
-## Technologies Used
+Response:
 
-- **HTML5**
-- **CSS3** (Flexbox, Grid, Media Queries, Animations)
-- **JavaScript (ES6)** — for interactivity and localStorage management
-- **jQuery** — for DOM manipulation
+```json
+{ "id": "...", "username": "...", "email": "...", "role": "user", "accessToken": "..." }
+```
 
----
+#### Sign in
 
-## Features Overview
+`POST /api/auth/signin`
 
-| Feature | Description |
-|----------|-------------|
-| Responsive Layout | Adjusts to mobile, tablet, and desktop screens |
-| Light/Dark Mode | Saves preference using localStorage |
-| Search System | Dynamic filtering with live suggestions |
-| Subscription Popup | Includes input validation and reset functionality |
-| Animated Interface | Smooth UI transitions and text effects |
-| Scroll Tracker | Displays reading progress visually |
+Body:
+
+```json
+{ "email": "user1@test.com", "password": "123456" }
+```
+
+or
+
+```json
+{ "username": "user1", "password": "123456" }
+```
 
 ---
 
-## Authors
+### Users
 
-**Vladislav Kovernikov**  
-Frontend Developer & Project Creator (main and chapters)
+#### Get all users (admin only)
 
-**Diyar Sekezhanov**
-Frontend Developer & Project Creator (index and top)
+`GET /api/users`
 
-**Tamerlan Ibragimov**
-Frontend Developer & Project Creator (comments and page)
+#### Get user by id (requires auth; access depends on your RBAC rules)
 
-Hosted on [GitHub Pages](https://volanch.github.io/LibManga/)  
-Repository: [LibManga](https://github.com/volanch/LibManga)
+`GET /api/users/:id`
+
+#### Delete user (admin only)
+
+`DELETE /api/users/:id`
+
+#### Change password (authorized user)
+
+`PUT /api/users/:id/change-password`
+
+Body:
+
+```json
+{ "oldPassword": "old123", "newPassword": "new12345" }
+```
 
 ---
 
-> *This project demonstrates responsive design, persistent theming, user interactivity,
-> and animation principles suitable for modern front-end development portfolios.*
+### Manga
+
+#### Get all manga
+
+`GET /api/manga`
+
+#### Get manga by id
+
+`GET /api/manga/:id`
+
+#### Create manga (moderator)
+
+`POST /api/manga`
+
+#### Update manga (moderator)
+
+`PUT /api/manga/:id`
+
+#### Delete manga (admin)
+
+`DELETE /api/manga/:id`
+
+---
+
+### Chapters
+
+#### Get chapters
+
+`GET /api/chapters`
+
+#### Get chapter by id
+
+`GET /api/chapters/:id`
+
+#### Create chapter (moderator)
+
+`POST /api/chapters`
+
+#### Update chapter (moderator)
+
+`PUT /api/chapters/:id`
+
+#### Delete chapter (admin)
+
+`DELETE /api/chapters/:id`
+
+---
+
+### Comments
+
+#### Get comments
+
+`GET /api/comments`
+
+#### Create comment (auth)
+
+`POST /api/comments`
+
+#### Edit comment (owner/auth)
+
+`PATCH /api/comments/:id`
+
+#### Like comment
+
+`PATCH /api/comments/:id/like`
+
+#### Delete comment (owner/auth)
+
+`DELETE /api/comments/:id`
+
+---
+
+## Screenshots (All Web App Features)
+
+
+### 1) Authentication (Sign In / Sign Up)
+
+![img.png](pngs/img.png)
+![img_1.png](pngs/img_1.png)
+
+### 2) Home Page (Manga carousel + sections)
+
+![img.png](pngs/img2.png)
+
+### 3) Users Page (Admin only: list + delete)
+
+![img_2.png](pngs/img_7.png)
+
+### 4) Account Page (Profile + Change password)
+
+![img_3.png](pngs/img_8.png)
+
+### 5) Comments (Create/Edit/Delete/Like)
+
+![img_4.png](pngs/img_9.png)
+
+---
+
+## Notes for Testing (Postman)
+
+1. Sign in to get `accessToken`
+2. Use header `Authorization: Bearer <token>` for protected endpoints
+3. Admin endpoints:
+
+  * `GET /api/users`
+  * `DELETE /api/users/:id`
+
+---
